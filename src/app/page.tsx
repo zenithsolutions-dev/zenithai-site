@@ -14,6 +14,8 @@ import {
 
 const CALENDLY_URL = "https://calendly.com/znthsolutions/30min";
 const CONTACT_EMAIL = "znthsolutions@gmail.com";
+const CONTACT_PHONE_DISPLAY = "(613) 416-5158";
+const CONTACT_PHONE_TEL = "+16134165158";
 
 export default function Home() {
   return (
@@ -650,9 +652,18 @@ function CTA() {
           >
             Get my free consultation <ArrowUpRight size={16} />
           </a>
+        </div>
+        <div className="mt-6 flex flex-col items-center justify-center gap-1 text-sm text-zinc-400 sm:flex-row sm:gap-5">
+          <a
+            href={`tel:${CONTACT_PHONE_TEL}`}
+            className="font-medium text-zinc-300 underline-offset-4 hover:text-white hover:underline"
+          >
+            {CONTACT_PHONE_DISPLAY}
+          </a>
+          <span className="hidden text-zinc-700 sm:inline">·</span>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="text-sm font-medium text-zinc-300 underline-offset-4 hover:underline"
+            className="font-medium text-zinc-300 underline-offset-4 hover:text-white hover:underline"
           >
             {CONTACT_EMAIL}
           </a>
@@ -697,6 +708,11 @@ function SiteFooter() {
         <div>
           <p className="text-sm font-medium text-zinc-200">Get in touch</p>
           <ul className="mt-3 space-y-2 text-sm text-zinc-500">
+            <li>
+              <a href={`tel:${CONTACT_PHONE_TEL}`} className="hover:text-zinc-200">
+                {CONTACT_PHONE_DISPLAY}
+              </a>
+            </li>
             <li>
               <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-zinc-200">
                 {CONTACT_EMAIL}

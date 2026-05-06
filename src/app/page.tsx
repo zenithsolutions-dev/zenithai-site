@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowUpRight,
   Globe,
@@ -19,7 +18,7 @@ const CONTACT_PHONE_TEL = "+16134165158";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col bg-zinc-950 text-zinc-100">
+    <div id="top" className="flex flex-1 flex-col bg-zinc-950 text-zinc-100">
       <SiteNav />
       <main className="flex-1">
         <Hero />
@@ -39,13 +38,13 @@ function SiteNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-zinc-950/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 text-xl font-semibold tracking-tight">
+        <a href="#top" className="flex items-center gap-2 text-xl font-semibold tracking-tight">
           <ZenithMark className="h-6 w-6" />
           Zenith
           <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
             AI
           </span>
-        </Link>
+        </a>
         <nav className="hidden items-center gap-8 text-sm text-zinc-400 md:flex">
           <a href="#services" className="hover:text-white">Services</a>
           <a href="#how" className="hover:text-white">How we work</a>
@@ -678,13 +677,13 @@ function SiteFooter() {
     <footer className="border-t border-white/5">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 md:grid-cols-4">
         <div>
-          <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight">
+          <a href="#top" className="flex items-center gap-2 text-lg font-semibold tracking-tight">
             <ZenithMark className="h-5 w-5" />
             Zenith
             <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
               AI
             </span>
-          </Link>
+          </a>
           <p className="mt-3 text-sm text-zinc-500">
             AI-powered marketing for Ottawa small businesses.
           </p>

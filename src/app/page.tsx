@@ -12,6 +12,9 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+const CALENDLY_URL = "https://calendly.com/znthsolutions/30min";
+const CONTACT_EMAIL = "znthsolutions@gmail.com";
+
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col bg-zinc-950 text-zinc-100">
@@ -48,7 +51,9 @@ function SiteNav() {
           <a href="#contact" className="hover:text-white">Contact</a>
         </nav>
         <a
-          href="#contact"
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-200"
         >
           Book a call <ArrowUpRight size={14} />
@@ -119,7 +124,9 @@ function Hero() {
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="#contact"
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-12 items-center justify-center gap-1 rounded-full bg-white px-7 text-sm font-medium text-zinc-900 shadow-lg shadow-blue-500/10 hover:bg-zinc-200"
           >
             Get my free consultation <ArrowUpRight size={16} />
@@ -511,7 +518,7 @@ const steps = [
   {
     icon: Search,
     title: "Discovery",
-    body: "Free 20-minute call. We learn your business, your customers, and what's actually working today.",
+    body: "Free intro call. We learn your business, your customers, and what's actually working today.",
   },
   {
     icon: Wrench,
@@ -630,22 +637,24 @@ function CTA() {
           Ready to grow your business?
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-zinc-400">
-          Book a free 20-minute consultation. We&apos;ll look at where you are
-          now, what&apos;s working, and what an AI-powered marketing setup
-          would do for you.
+          Book a free consultation. We&apos;ll look at where you are now,
+          what&apos;s working, and what an AI-powered marketing setup would do
+          for you.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="mailto:znthsolutions@gmail.com"
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-12 items-center justify-center gap-1 rounded-full bg-white px-7 text-sm font-medium text-zinc-900 hover:bg-zinc-200"
           >
             Get my free consultation <ArrowUpRight size={16} />
           </a>
           <a
-            href="mailto:znthsolutions@gmail.com"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="text-sm font-medium text-zinc-300 underline-offset-4 hover:underline"
           >
-            znthsolutions@gmail.com
+            {CONTACT_EMAIL}
           </a>
         </div>
       </div>
@@ -689,8 +698,8 @@ function SiteFooter() {
           <p className="text-sm font-medium text-zinc-200">Get in touch</p>
           <ul className="mt-3 space-y-2 text-sm text-zinc-500">
             <li>
-              <a href="mailto:znthsolutions@gmail.com" className="hover:text-zinc-200">
-                znthsolutions@gmail.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-zinc-200">
+                {CONTACT_EMAIL}
               </a>
             </li>
             <li>Ottawa, Canada</li>

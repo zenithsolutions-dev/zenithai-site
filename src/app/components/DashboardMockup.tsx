@@ -1,6 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
+import { useEffect, useRef } from "react";
 import { Activity, CheckCircle2 } from "lucide-react";
 
 export default function DashboardMockup() {
@@ -49,9 +56,36 @@ export default function DashboardMockup() {
 
           {/* KPI row */}
           <div className="grid grid-cols-3 gap-3">
-            <KpiCard label="Conversions" value="247" delta="+24%" up />
-            <KpiCard label="Bookings" value="47" delta="+12" up />
-            <KpiCard label="Revenue" value="$12.4K" delta="+18%" up />
+            <KpiCard
+              index={0}
+              label="Conversions"
+              to={247}
+              duration={1.5}
+              delay={0.3}
+              delta="+24%"
+              up
+            />
+            <KpiCard
+              index={1}
+              label="Bookings"
+              to={47}
+              duration={1.2}
+              delay={0.5}
+              delta="+12"
+              up
+            />
+            <KpiCard
+              index={2}
+              label="Revenue"
+              to={12.4}
+              duration={1.4}
+              delay={0.4}
+              prefix="$"
+              suffix="K"
+              decimals={1}
+              delta="+18%"
+              up
+            />
           </div>
 
           {/* chart */}
@@ -102,21 +136,59 @@ export default function DashboardMockup() {
 }
 
 function KpiCard({
+  index,
   label,
-  value,
+  to,
+  duration,
+  delay,
+  prefix = "",
+  suffix = "",
+  decimals = 0,
   delta,
   up,
 }: {
+  index: number;
   label: string;
-  value: string;
+  to: number;
+  duration: number;
+  delay: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
   delta: string;
   up: boolean;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const count = useMotionValue(0);
+  const display = useTransform(count, (v) => {
+    const formatted = decimals > 0 ? v.toFixed(decimals) : Math.round(v).toString();
+    return `${prefix}${formatted}${suffix}`;
+  });
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(count, to, {
+      duration,
+      delay,
+      ease: "easeOut",
+    });
+    return () => controls.stop();
+  }, [inView, count, to, duration, delay]);
+
   return (
-    <div className="rounded-xl border border-white/5 bg-zinc-900/40 p-4">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.15 + 0.2 }}
+      className="rounded-xl border border-white/5 bg-zinc-900/40 p-4"
+    >
       <p className="text-xs text-zinc-500">{label}</p>
       <div className="mt-2 flex items-baseline justify-between">
-        <p className="text-2xl font-semibold text-zinc-100">{value}</p>
+        <motion.p className="text-2xl font-semibold text-zinc-100 tabular-nums">
+          {display}
+        </motion.p>
         <span
           className={`text-xs font-medium ${
             up ? "text-emerald-400" : "text-red-400"
@@ -125,7 +197,7 @@ function KpiCard({
           {delta}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -153,29 +225,45 @@ function Chart() {
           strokeWidth="1"
         />
       ))}
-      <path
+      <motion.path
         d="M0 80 L40 70 L80 75 L120 60 L160 55 L200 45 L240 50 L280 35 L320 30 L360 22 L400 15 L400 120 L0 120 Z"
         fill="url(#sessGrad)"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 1.2 }}
       />
-      <path
+      <motion.path
         d="M0 80 L40 70 L80 75 L120 60 L160 55 L200 45 L240 50 L280 35 L320 30 L360 22 L400 15"
         stroke="#60a5fa"
         strokeWidth="2"
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        whileInView={{ pathLength: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.6 }}
       />
-      <path
+      <motion.path
         d="M0 100 L40 95 L80 92 L120 88 L160 82 L200 78 L240 70 L280 68 L320 60 L360 55 L400 48 L400 120 L0 120 Z"
         fill="url(#inqGrad)"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 1.2 }}
       />
-      <path
+      <motion.path
         d="M0 100 L40 95 L80 92 L120 88 L160 82 L200 78 L240 70 L280 68 L320 60 L360 55 L400 48"
         stroke="#a78bfa"
         strokeWidth="2"
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        whileInView={{ pathLength: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.9 }}
       />
     </svg>
   );

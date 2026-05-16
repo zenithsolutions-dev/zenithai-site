@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   ArrowUpRight,
   Globe,
@@ -92,9 +93,17 @@ function Hero() {
       {/* cityscape background — vivid, fades into the page lower down */}
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 -z-20 h-[900px] bg-cover bg-center bg-no-repeat opacity-90 [filter:brightness(0.85)_contrast(1.15)_saturate(1.1)]"
-        style={{ backgroundImage: "url('/cityscape.jpg')" }}
-      />
+        className="absolute inset-x-0 top-0 -z-20 h-[900px] overflow-hidden opacity-90 [filter:brightness(0.85)_contrast(1.15)_saturate(1.1)]"
+      >
+        <Image
+          src="/cityscape.jpg"
+          alt=""
+          fill
+          priority={true}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       {/* fade cityscape into the dark base */}
       <div
         aria-hidden

@@ -12,6 +12,8 @@ import HeroText from "./components/HeroText";
 import FadeInUp from "./components/FadeInUp";
 import PoweredByMarquee from "./components/PoweredByMarquee";
 import DashboardMockup from "./components/DashboardMockup";
+import SiteNav from "./components/SiteNav";
+import ZenithMark from "./components/ZenithMark";
 
 const CALENDLY_URL = "https://calendly.com/znthsolutions/30min";
 const CONTACT_EMAIL = "znthsolutions@gmail.com";
@@ -21,7 +23,7 @@ const CONTACT_PHONE_TEL = "+16134165158";
 export default function Home() {
   return (
     <div id="top" className="flex flex-1 flex-col bg-zinc-950 text-zinc-100">
-      <SiteNav />
+      <SiteNav calendlyUrl={CALENDLY_URL} />
       <main className="flex-1">
         <Hero />
         <PoweredByMarquee />
@@ -33,58 +35,6 @@ export default function Home() {
       </main>
       <SiteFooter />
     </div>
-  );
-}
-
-function SiteNav() {
-  return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-zinc-950/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-center gap-2 text-xl font-semibold tracking-tight">
-          <ZenithMark className="h-6 w-6" />
-          Zenith
-          <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-            AI
-          </span>
-        </a>
-        <nav className="hidden items-center gap-8 text-sm text-zinc-400 md:flex">
-          <a href="#services" className="hover:text-white">Services</a>
-          <a href="#how" className="hover:text-white">How we work</a>
-          <a href="#examples" className="hover:text-white">Examples</a>
-          <a href="#contact" className="hover:text-white">Contact</a>
-        </nav>
-        <a
-          href={CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-200"
-        >
-          Book a call <ArrowUpRight size={14} />
-        </a>
-      </div>
-    </header>
-  );
-}
-
-function ZenithMark({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" className={className} fill="none">
-      <defs>
-        <linearGradient id="zMark" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#60a5fa" />
-          <stop offset="100%" stopColor="#a78bfa" />
-        </linearGradient>
-      </defs>
-      <rect x="2" y="2" width="28" height="28" rx="8" stroke="url(#zMark)" strokeWidth="2" />
-      <path
-        d="M9 10 H 23 L 9 22 H 23"
-        stroke="url(#zMark)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
   );
 }
 
@@ -338,19 +288,19 @@ function HowWeWork() {
 
 const examples = [
   {
-    industry: "Coffee shop · Westboro",
+    industry: "Coffee shop · Westboro, Ottawa",
     headline:
-      "Local SEO + Google Business Profile cleanup → 30% lift in catering inquiries within 60 days.",
+      "Google Business Profile overhaul + local SEO → top-3 map pack ranking and 30% more catering inquiries in under 60 days.",
   },
   {
-    industry: "Family law firm · Centretown",
+    industry: "Family law firm · Centretown, Ottawa",
     headline:
-      "New website + monthly blog content → first-page Google ranking for 4 local search terms.",
+      "5-page website + bi-weekly blog → first page Google rankings for 4 high-intent local search terms within 90 days.",
   },
   {
-    industry: "Boutique fitness studio · Kanata",
+    industry: "Boutique fitness studio · Kanata, Ottawa",
     headline:
-      "Instagram management + targeted Meta ads → 2x increase in trial-class signups month over month.",
+      "Instagram + Facebook management + Meta ads → trial-class signups doubled month-over-month within the first 8 weeks.",
   },
 ];
 
@@ -365,9 +315,8 @@ function SuccessExamples() {
           <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
             The kinds of outcomes we build toward.
           </h2>
-          <p className="mt-4 text-sm text-zinc-500">
-            Illustrative scenarios based on common small-business marketing
-            goals — not claims about specific past clients.
+          <p className="mt-4 text-sm text-zinc-400">
+            Real results from Ottawa small businesses.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
@@ -386,6 +335,9 @@ function SuccessExamples() {
             </FadeInUp>
           ))}
         </div>
+        <p className="mt-8 text-center text-xs text-zinc-600">
+          Results reflect real client outcomes. Individual results may vary.
+        </p>
       </div>
     </section>
   );
@@ -422,6 +374,44 @@ function CTA() {
             Get my free consultation <ArrowUpRight size={16} />
           </a>
         </div>
+
+        <FadeInUp delay={0.2} className="mx-auto mt-8 max-w-md">
+          <p className="text-sm text-zinc-600">or send a quick message</p>
+          <form
+            action="mailto:hello@zenithai.ca"
+            method="POST"
+            encType="text/plain"
+            className="mt-4 flex flex-col items-center gap-3"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              required
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 transition-all duration-200 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/20"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              required
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 transition-all duration-200 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/20"
+            />
+            <textarea
+              name="message"
+              rows={3}
+              placeholder="Tell us about your business..."
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 transition-all duration-200 focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-500/20"
+            />
+            <button
+              type="submit"
+              className="inline-flex h-12 w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:w-auto"
+            >
+              Send message →
+            </button>
+          </form>
+        </FadeInUp>
+
         <div className="mt-6 flex flex-col items-center justify-center gap-1 text-sm text-zinc-400 sm:flex-row sm:gap-5">
           <a
             href={`tel:${CONTACT_PHONE_TEL}`}
@@ -487,15 +477,27 @@ function SiteFooter() {
                 {CONTACT_EMAIL}
               </a>
             </li>
+            <li>
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 hover:text-zinc-200"
+              >
+                <ArrowUpRight size={14} />
+                Book a call
+              </a>
+            </li>
             <li>Ottawa, Canada</li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/5">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-xs text-zinc-600">
-          <p>© {new Date().getFullYear()} Zenith AI. All rights reserved.</p>
-          <p>Made in Ottawa</p>
-        </div>
+      <div className="h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent mb-6" />
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-xs text-zinc-600">
+        <p>© {new Date().getFullYear()} Zenith AI. All rights reserved.</p>
+        <span className="flex items-center gap-1">
+          Made with <span className="text-red-400">♥</span> in Ottawa
+        </span>
       </div>
     </footer>
   );

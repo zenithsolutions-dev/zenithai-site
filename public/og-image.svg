@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Zenith AI — AI-powered marketing for Ottawa small businesses">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <g transform="translate(80, 80)">
+    <rect x="0" y="0" width="72" height="72" rx="18" stroke="url(#accent)" stroke-width="4" fill="none"/>
+    <path d="M18 22 H 54 L 18 50 H 54" stroke="url(#accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="92" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#fafafa">
+      Zenith <tspan fill="url(#accent)">AI</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(80, 240)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="76" font-weight="600" fill="#fafafa" letter-spacing="-2">
+      <tspan x="0" y="0">AI-powered marketing</tspan>
+      <tspan x="0" y="90">for Ottawa small</tspan>
+      <tspan x="0" y="180">businesses.</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(80, 540)">
+    <rect x="0" y="-22" width="6" height="30" fill="url(#accent)"/>
+    <text x="22" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="24" font-weight="500" fill="#a1a1aa">
+      Websites · Local SEO · Social media
+    </text>
+  </g>
+
+  <text x="1120" y="588" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="500" fill="#71717a">
+    zenithai.ca
+  </text>
+</svg>

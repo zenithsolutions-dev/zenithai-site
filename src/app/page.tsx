@@ -182,7 +182,7 @@ function Services() {
       >
         <div className="absolute -top-32 right-1/4 h-[400px] w-[400px] rounded-full bg-blue-500/5 blur-3xl" />
       </div>
-      <div className="relative mx-auto max-w-6xl px-6 py-24">
+      <div className="relative mx-auto max-w-6xl px-6 py-28">
         <div className="mb-14 max-w-2xl">
           <p className="mb-3 text-sm font-medium text-blue-400">
             What we offer
@@ -200,7 +200,7 @@ function Services() {
             <FadeInUp
               key={s.name}
               delay={i * 0.1}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-8 transition hover:border-white/20"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-9 transition-all duration-300 hover:border-transparent hover:ring-1 hover:ring-blue-500/40 hover:shadow-lg hover:shadow-blue-500/10"
             >
               <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-violet-500/20 text-blue-300">
                 <s.icon size={22} />
@@ -235,7 +235,7 @@ function Services() {
 function StatBand() {
   return (
     <section className="border-t border-white/5">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="mx-auto max-w-6xl px-6 py-24">
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-blue-500/10 via-zinc-900 to-violet-500/10 p-10 text-center sm:p-16">
           <div
             aria-hidden
@@ -255,6 +255,28 @@ function StatBand() {
             didn&apos;t. That means small businesses get agency-quality work
             without agency-priced bills.
           </p>
+          <div className="relative mt-12 grid grid-cols-1 sm:grid-cols-3">
+            {[
+              { value: "3×", label: "Faster delivery vs traditional agencies" },
+              { value: "60%", label: "Average cost saving vs agency rates" },
+              { value: "100%", label: "Satisfaction guarantee" },
+            ].map((s, i) => (
+              <FadeInUp
+                key={s.label}
+                delay={i * 0.1}
+                className={`px-6 py-4 ${
+                  i > 0
+                    ? "border-t border-white/10 sm:border-t-0 sm:border-l"
+                    : ""
+                }`}
+              >
+                <p className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-4xl font-bold text-transparent">
+                  {s.value}
+                </p>
+                <p className="mt-1 text-sm text-zinc-400">{s.label}</p>
+              </FadeInUp>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -282,7 +304,7 @@ const steps = [
 function HowWeWork() {
   return (
     <section id="how" className="border-t border-white/5">
-      <div className="mx-auto max-w-6xl px-6 py-24">
+      <div className="mx-auto max-w-6xl px-6 py-28">
         <div className="mb-14 max-w-2xl">
           <p className="mb-3 text-sm font-medium text-blue-400">How we work</p>
           <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
@@ -294,7 +316,7 @@ function HowWeWork() {
             <FadeInUp
               key={step.title}
               delay={i * 0.15}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-8"
+              className="rounded-2xl border border-white/10 bg-white/[0.02] p-9"
             >
               <div className="flex items-center gap-3">
                 <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-blue-300">
@@ -335,7 +357,7 @@ const examples = [
 function SuccessExamples() {
   return (
     <section id="examples" className="border-t border-white/5 bg-zinc-900/30">
-      <div className="mx-auto max-w-6xl px-6 py-24">
+      <div className="mx-auto max-w-6xl px-6 py-28">
         <div className="mb-14 max-w-2xl">
           <p className="mb-3 text-sm font-medium text-blue-400">
             What success looks like
@@ -381,7 +403,7 @@ function CTA() {
       >
         <div className="absolute top-1/2 left-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-500/15 to-violet-500/15 blur-3xl" />
       </div>
-      <div className="relative mx-auto max-w-3xl px-6 py-24 text-center">
+      <div className="relative mx-auto max-w-3xl px-6 py-32 text-center">
         <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
           Ready to grow your business?
         </h2>

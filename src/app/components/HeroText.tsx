@@ -8,7 +8,7 @@ const EASE = "easeOut" as const;
 
 export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
   return (
-    <div className="mx-auto max-w-5xl px-6 pt-28 pb-20 text-center sm:pt-36">
+    <div className="mx-auto max-w-5xl px-6 pt-36 pb-20 text-center sm:pt-44">
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

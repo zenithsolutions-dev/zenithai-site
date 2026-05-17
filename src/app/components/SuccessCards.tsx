@@ -168,7 +168,7 @@ function SuccessCard({
 
       {/* Big metric */}
       <div className="mt-6 flex items-baseline gap-2">
-        <motion.p className="font-[var(--font-playfair)] text-6xl tabular-nums leading-none text-transparent [background:linear-gradient(135deg,#FFE08A_0%,#C9A84C_55%,#8A6F2A_100%)] [-webkit-background-clip:text] [background-clip:text]">
+        <motion.p className="font-[var(--font-playfair)] text-6xl font-semibold tabular-nums leading-none text-[#FFE08A] [text-shadow:0_0_30px_rgba(201,168,76,0.45)]">
           {display}
         </motion.p>
       </div>

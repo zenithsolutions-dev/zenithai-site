@@ -1,38 +1,153 @@
 @import "tailwindcss";
 
+:root {
+  --bg-deep: #03040a;
+  --bg-primary: #070910;
+  --bg-surface: #0d1017;
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --accent-gold: #c9a84c;
+  --accent-gold-bright: #ffe08a;
+  --accent-cyan: #00d4ff;
+  --accent-violet: #7b5ea7;
+  --text-primary: #f0f2ff;
+  --text-secondary: #8892a4;
+  --text-muted: #3d4555;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-glow: rgba(201, 168, 76, 0.3);
+
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+}
+
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
 
-:root {
-  --background: #0a0a0b;
-  --foreground: #f4f4f5;
+/* Lenis takes over native scroll; disable smooth-scroll fallback */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-bg-deep: var(--bg-deep);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-surface: var(--bg-surface);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-violet: var(--accent-violet);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
+/* Premium glass panel utility */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Gold underline draw — used in HeroText */
+.hero-underline {
+  position: relative;
+  display: inline-block;
+}
+.hero-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-bright));
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-underline.in-view::after {
+  width: 100%;
+}
+
+/* Scan line — used in DashboardMockup */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+.scanline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.06) 50%,
+    transparent 100%
+  );
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+}
+
+/* Slow bob for floating elements */
+@keyframes float-bob {
+  0%, 100% { transform: translateY(-8px); }
+  50% { transform: translateY(0); }
+}
+.float-bob {
+  animation: float-bob 4s ease-in-out infinite;
+}
+
+/* Subtle ping for LIVE indicator */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.live-pulse {
+  animation: live-pulse 1.8s ease-in-out infinite;
+}
+
+/* Marquee — kept from prior implementation */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
 .animate-marquee {
   animation: marquee 25s linear infinite;
   will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee { animation: none; }
+  .animate-marquee,
+  .float-bob,
+  .live-pulse,
+  .scanline::before {
+    animation: none !important;
+  }
+  .hero-underline::after {
+    transition: none !important;
+    width: 100% !important;
+  }
 }

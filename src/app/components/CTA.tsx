@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import { ArrowUpRight, Check, Copy } from "lucide-react";
@@ -103,29 +103,30 @@ export default function CTA({
           className="text-balance font-[var(--font-playfair)] text-4xl tracking-tight text-[#F0F2FF] sm:text-6xl"
         >
           {HEADLINE_WORDS.map((word, wi) => (
-            <span
-              key={wi}
-              aria-hidden
-              className="inline-block whitespace-nowrap"
-            >
-              {word.split("").map((ch, ci) => (
-                <motion.span
-                  key={ci}
-                  initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.6 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: (HEADLINE_WORD_OFFSETS[wi] + ci) * 0.025,
-                    ease: "easeOut",
-                  }}
-                  className="inline-block"
-                >
-                  {ch}
-                </motion.span>
-              ))}
-              {wi < HEADLINE_WORDS.length - 1 && " "}
-            </span>
+            <Fragment key={wi}>
+              <span
+                aria-hidden
+                className="inline-block whitespace-nowrap"
+              >
+                {word.split("").map((ch, ci) => (
+                  <motion.span
+                    key={ci}
+                    initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: (HEADLINE_WORD_OFFSETS[wi] + ci) * 0.025,
+                      ease: "easeOut",
+                    }}
+                    className="inline-block"
+                  >
+                    {ch}
+                  </motion.span>
+                ))}
+              </span>
+              {wi < HEADLINE_WORDS.length - 1 ? " " : null}
+            </Fragment>
           ))}
         </h2>
 

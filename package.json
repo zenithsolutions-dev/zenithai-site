@@ -21,7 +21,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "simple-icons": "^16.18.1",
-    "three": "^0.184.0"
+    "three": "^0.179.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

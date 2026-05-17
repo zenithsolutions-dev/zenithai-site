@@ -7,6 +7,18 @@ import { ArrowUpRight, Check, Copy } from "lucide-react";
 import { gsap } from "../lib/gsap";
 
 const HEADLINE = "Ready to grow your business?";
+const HEADLINE_WORDS = HEADLINE.split(" ");
+// Precompute the global char-index offset for each word so per-char delay
+// timing stays continuous across word boundaries.
+const HEADLINE_WORD_OFFSETS: number[] = (() => {
+  const offsets: number[] = [];
+  let idx = 0;
+  for (const w of HEADLINE_WORDS) {
+    offsets.push(idx);
+    idx += w.length + 1; // +1 accounts for the space between words
+  }
+  return offsets;
+})();
 
 type CTAProps = {
   calendlyUrl: string;
@@ -88,24 +100,32 @@ export default function CTA({
       <div className="relative mx-auto max-w-3xl px-6 py-36 text-center sm:px-8">
         <h2
           aria-label={HEADLINE}
-          className="font-[var(--font-playfair)] text-4xl tracking-tight text-[#F0F2FF] sm:text-6xl"
+          className="text-balance font-[var(--font-playfair)] text-4xl tracking-tight text-[#F0F2FF] sm:text-6xl"
         >
-          {HEADLINE.split("").map((ch, i) => (
-            <motion.span
-              key={i}
-              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.025,
-                ease: "easeOut",
-              }}
+          {HEADLINE_WORDS.map((word, wi) => (
+            <span
+              key={wi}
               aria-hidden
-              className="inline-block whitespace-pre"
+              className="inline-block whitespace-nowrap"
             >
-              {ch}
-            </motion.span>
+              {word.split("").map((ch, ci) => (
+                <motion.span
+                  key={ci}
+                  initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: (HEADLINE_WORD_OFFSETS[wi] + ci) * 0.025,
+                    ease: "easeOut",
+                  }}
+                  className="inline-block"
+                >
+                  {ch}
+                </motion.span>
+              ))}
+              {wi < HEADLINE_WORDS.length - 1 && " "}
+            </span>
           ))}
         </h2>
 

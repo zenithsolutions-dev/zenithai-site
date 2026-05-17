@@ -10,7 +10,7 @@ import CTA from "./components/CTA";
 import SiteFooter from "./components/SiteFooter";
 
 const CALENDLY_URL = "https://calendly.com/znthsolutions/30min";
-const CONTACT_EMAIL = "znthsolutions@gmail.com";
+const CONTACT_EMAIL = "hello@zenithai.ca";
 const CONTACT_PHONE_DISPLAY = "(613) 416-5158";
 const CONTACT_PHONE_TEL = "+16134165158";
 const CONTACT_FORM_ACTION = "mailto:hello@zenithai.ca";

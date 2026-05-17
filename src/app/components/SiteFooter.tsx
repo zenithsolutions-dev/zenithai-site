@@ -43,7 +43,7 @@ export default function SiteFooter({
                 <span className="text-[#00D4FF]">AI</span>
               </span>
             </a>
-            <p className="mt-5 text-sm leading-relaxed text-[#8892A4]">
+            <p className="mt-5 text-sm leading-relaxed text-[#B0B8C6]">
               AI-powered marketing for Ottawa small businesses. Built faster,
               priced for what local businesses can actually afford.
             </p>
@@ -53,7 +53,7 @@ export default function SiteFooter({
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-[#C9A84C]">
               Services
             </p>
-            <ul className="mt-5 space-y-3 text-sm text-[#8892A4]">
+            <ul className="mt-5 space-y-3 text-sm text-[#B0B8C6]">
               <li>
                 <a
                   href="#services"
@@ -85,7 +85,7 @@ export default function SiteFooter({
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-[#C9A84C]">
               Company
             </p>
-            <ul className="mt-5 space-y-3 text-sm text-[#8892A4]">
+            <ul className="mt-5 space-y-3 text-sm text-[#B0B8C6]">
               <li>
                 <a
                   href="#how"
@@ -117,7 +117,7 @@ export default function SiteFooter({
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-[#C9A84C]">
               Get in touch
             </p>
-            <ul className="mt-5 space-y-3 text-sm text-[#8892A4]">
+            <ul className="mt-5 space-y-3 text-sm text-[#B0B8C6]">
               <li>
                 <a
                   href={`tel:${contactPhoneTel}`}
@@ -144,7 +144,7 @@ export default function SiteFooter({
                   Book a call <ArrowUpRight size={13} />
                 </a>
               </li>
-              <li className="pt-1 text-[#3D4555]">Ottawa, Canada</li>
+              <li className="pt-1 text-[#8892A4]">Ottawa, Canada</li>
             </ul>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function SiteFooter({
         className="h-px bg-gradient-to-r from-transparent via-[#C9A84C]/40 to-transparent"
       />
 
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-[#3D4555] sm:flex-row sm:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-[#8892A4] sm:flex-row sm:px-8">
         <p>© {new Date().getFullYear()} Zenith AI. All rights reserved.</p>
         <span className="flex items-center gap-1.5">
           Made with

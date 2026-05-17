@@ -32,7 +32,7 @@ function PartnerList({ ariaHidden = false }: { ariaHidden?: boolean }) {
       {partners.map((p) => (
         <li
           key={p.name}
-          className="flex items-center gap-2.5 text-[#3D4555] transition-colors duration-300 hover:text-[#C9A84C]"
+          className="flex items-center gap-2.5 text-[#8892A4] transition-colors duration-300 hover:text-[#C9A84C]"
           title={p.name}
         >
           <svg

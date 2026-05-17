@@ -180,7 +180,7 @@ export default function Services() {
             <span className="font-medium text-[#FFE08A]">
               One-time package from $499.99
             </span>{" "}
-            <span className="text-[#8892A4]">+ $50/mo hosting</span>
+            <span className="text-[#B0B8C6]">+ $50/year hosting</span>
           </p>
         </motion.div>
       </div>

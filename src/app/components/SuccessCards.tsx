@@ -96,7 +96,7 @@ export default function SuccessCards() {
           ))}
         </div>
 
-        <p className="mt-12 text-center text-xs text-[#3D4555]">
+        <p className="mt-12 text-center text-xs text-[#8892A4]">
           Results reflect real client outcomes. Individual results may vary.
         </p>
       </div>

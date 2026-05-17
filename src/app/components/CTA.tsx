@@ -29,7 +29,7 @@ type CTAProps = {
 };
 
 const inputClass =
-  "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-[#F0F2FF] placeholder:text-[#3D4555] transition-all duration-200 focus:border-[rgba(201,168,76,0.4)] focus:outline-none focus:ring-1 focus:ring-[rgba(201,168,76,0.25)]";
+  "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-[#F0F2FF] placeholder:text-[#8892A4] transition-all duration-200 focus:border-[rgba(201,168,76,0.4)] focus:outline-none focus:ring-1 focus:ring-[rgba(201,168,76,0.25)]";
 
 export default function CTA({
   calendlyUrl,
@@ -139,7 +139,7 @@ export default function CTA({
             delay: HEADLINE.length * 0.025 + 0.2,
             ease: "easeOut",
           }}
-          className="mx-auto mt-6 max-w-xl text-[#8892A4]"
+          className="mx-auto mt-6 max-w-xl text-[#C8CFDB]"
         >
           Book a free consultation. We&apos;ll look at where you are now,
           what&apos;s working, and what an AI-powered marketing setup would do
@@ -182,7 +182,7 @@ export default function CTA({
           }}
           className="mx-auto mt-10 max-w-md"
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-[#3D4555]">
+          <p className="text-xs uppercase tracking-[0.3em] text-[#8892A4]">
             or send a quick message
           </p>
           <form
@@ -228,7 +228,7 @@ export default function CTA({
             duration: 0.6,
             delay: HEADLINE.length * 0.025 + 0.7,
           }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 text-sm text-[#8892A4] sm:flex-row sm:gap-6"
+          className="mt-10 flex flex-col items-center justify-center gap-3 text-sm text-[#B0B8C6] sm:flex-row sm:gap-6"
         >
           <button
             type="button"
@@ -252,7 +252,7 @@ export default function CTA({
               />
             )}
           </button>
-          <span className="hidden text-[#3D4555] sm:inline">·</span>
+          <span className="hidden text-[#8892A4] sm:inline">·</span>
           <button
             type="button"
             onClick={() => copy(contactEmail, setCopiedEmail)}

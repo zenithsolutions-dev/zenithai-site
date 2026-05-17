@@ -16,7 +16,7 @@ const services: Service[] = [
   {
     icon: Globe,
     name: "Websites",
-    price: "From $50/month",
+    price: "From $49.99/month",
     blurb: "Launch-ready in days, not months. Modern, fast, mobile-first.",
     bullets: [
       "5-page custom build",
@@ -27,7 +27,7 @@ const services: Service[] = [
   {
     icon: TrendingUp,
     name: "Local SEO",
-    price: "From $50/month",
+    price: "From $49.99/month",
     blurb: "Get found on Google in Ottawa. Rank higher, get more calls.",
     bullets: [
       "Google Business Profile setup",
@@ -38,7 +38,7 @@ const services: Service[] = [
   {
     icon: Megaphone,
     name: "Social Media",
-    price: "From $50/month",
+    price: "From $49.99/month",
     blurb:
       "12 posts a month, fully managed. You stay focused on running the business.",
     bullets: [
@@ -155,6 +155,34 @@ export default function Services() {
             </motion.article>
           ))}
         </div>
+
+        {/* One-time purchase option banner */}
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{
+            duration: 0.7,
+            delay: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="relative mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.3)] bg-gradient-to-r from-[#C9A84C]/[0.04] via-[#FFE08A]/[0.08] to-[#C9A84C]/[0.04] p-6 text-center sm:p-7"
+        >
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/60 to-transparent"
+          />
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
+            One-time option
+          </p>
+          <p className="mt-3 text-base text-[#F0F2FF] sm:text-lg">
+            Prefer to own it outright?{" "}
+            <span className="font-medium text-[#FFE08A]">
+              One-time package from $499.99
+            </span>{" "}
+            <span className="text-[#8892A4]">+ $50/mo hosting</span>
+          </p>
+        </motion.div>
       </div>
     </section>
   );

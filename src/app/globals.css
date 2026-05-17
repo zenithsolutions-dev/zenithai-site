@@ -139,12 +139,46 @@ body {
   will-change: transform;
 }
 
+/* Floating particle field — pure CSS, no WebGL */
+@keyframes particle-rise {
+  0% {
+    transform: translate3d(0, 100vh, 0);
+    opacity: 0;
+  }
+  8% {
+    opacity: var(--p-opacity, 0.55);
+  }
+  92% {
+    opacity: var(--p-opacity, 0.55);
+  }
+  100% {
+    transform: translate3d(0, -20vh, 0);
+    opacity: 0;
+  }
+}
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #ffe08a;
+  pointer-events: none;
+  box-shadow: 0 0 6px rgba(255, 224, 138, 0.6);
+  animation: particle-rise var(--p-duration, 14s) linear infinite;
+  animation-delay: var(--p-delay, 0s);
+  will-change: transform, opacity;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .float-bob,
   .live-pulse,
-  .scanline::before {
+  .scanline::before,
+  .particle {
     animation: none !important;
+  }
+  .particle {
+    opacity: 0 !important;
   }
   .hero-underline::after {
     transition: none !important;

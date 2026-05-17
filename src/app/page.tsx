@@ -1,4 +1,4 @@
-import HeroSceneLazy from "./components/HeroSceneLazy";
+import ParallaxBackdrop from "./components/ParallaxBackdrop";
 import HeroText from "./components/HeroText";
 import DashboardMockup from "./components/DashboardMockup";
 import PoweredByMarquee from "./components/PoweredByMarquee";
@@ -55,14 +55,7 @@ function Hero() {
       className="relative h-[220vh] bg-[#03040A]"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <HeroSceneLazy />
-        </div>
-        {/* Subtle vignette overlay to deepen edges */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(3,4,10,0.75)_100%)]"
-        />
+        <ParallaxBackdrop />
         <HeroText calendlyUrl={CALENDLY_URL} />
         {/* Fade to next section */}
         <div

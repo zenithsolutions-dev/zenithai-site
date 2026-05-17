@@ -3,7 +3,18 @@
 import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-import { gsap, ScrollTrigger } from "../lib/gsap";
+import { gsap } from "../lib/gsap";
+
+/* Seeded PRNG (mulberry32) — deterministic so React's purity check is happy */
+function seededRandom(seed: number) {
+  let state = seed | 0;
+  return function () {
+    state = (state + 0x6d2b79f5) | 0;
+    let t = Math.imul(state ^ (state >>> 15), 1 | state);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
 
 /* ---------- Camera Rig: GSAP-driven scroll animation ---------- */
 function CameraRig() {
@@ -105,15 +116,18 @@ function GlassTower() {
 /* ---------- Surrounding low-rise buildings for depth ---------- */
 function Cityscape() {
   const buildings = useMemo(() => {
-    const items: { pos: [number, number, number]; size: [number, number, number] }[] = [];
-    // Generate a ring of smaller buildings around the main tower
+    const rand = seededRandom(7);
+    const items: {
+      pos: [number, number, number];
+      size: [number, number, number];
+    }[] = [];
     for (let i = 0; i < 14; i++) {
       const angle = (i / 14) * Math.PI * 2;
-      const r = 10 + Math.random() * 8;
-      const h = 2 + Math.random() * 5;
+      const r = 10 + rand() * 8;
+      const h = 2 + rand() * 5;
       items.push({
         pos: [Math.cos(angle) * r, h / 2, Math.sin(angle) * r],
-        size: [1.2 + Math.random() * 0.6, h, 1.2 + Math.random() * 0.6],
+        size: [1.2 + rand() * 0.6, h, 1.2 + rand() * 0.6],
       });
     }
     return items;
@@ -160,12 +174,15 @@ function ParticleField() {
   const ref = useRef<THREE.Points>(null);
   const COUNT = 800;
 
+  const recycleRand = useRef(seededRandom(99));
+
   const positions = useMemo(() => {
+    const rand = seededRandom(13);
     const arr = new Float32Array(COUNT * 3);
     for (let i = 0; i < COUNT; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 60;
-      arr[i * 3 + 1] = Math.random() * 40 - 5;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 60;
+      arr[i * 3] = (rand() - 0.5) * 60;
+      arr[i * 3 + 1] = rand() * 40 - 5;
+      arr[i * 3 + 2] = (rand() - 0.5) * 60;
     }
     return arr;
   }, []);
@@ -175,12 +192,13 @@ function ParticleField() {
     const geo = ref.current.geometry as THREE.BufferGeometry;
     const pos = geo.attributes.position as THREE.BufferAttribute;
     const arr = pos.array as Float32Array;
+    const rand = recycleRand.current;
     for (let i = 0; i < COUNT; i++) {
       arr[i * 3 + 1] += dt * 0.4;
       if (arr[i * 3 + 1] > 35) {
         arr[i * 3 + 1] = -5;
-        arr[i * 3] = (Math.random() - 0.5) * 60;
-        arr[i * 3 + 2] = (Math.random() - 0.5) * 60;
+        arr[i * 3] = (rand() - 0.5) * 60;
+        arr[i * 3 + 2] = (rand() - 0.5) * 60;
       }
     }
     pos.needsUpdate = true;

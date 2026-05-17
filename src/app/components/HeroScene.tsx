@@ -29,7 +29,7 @@ function CameraRig() {
         scrollTrigger: {
           trigger: "#hero-trigger",
           start: "top top",
-          end: "+=180%",
+          end: "bottom top",
           scrub: 1.5,
         },
       });
@@ -39,7 +39,7 @@ function CameraRig() {
         scrollTrigger: {
           trigger: "#hero-trigger",
           start: "top top",
-          end: "+=100%",
+          end: "bottom center",
           scrub: 1,
         },
       });

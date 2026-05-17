@@ -27,12 +27,12 @@ function PartnerList({ ariaHidden = false }: { ariaHidden?: boolean }) {
   return (
     <ul
       aria-hidden={ariaHidden || undefined}
-      className="flex shrink-0 items-center gap-x-12 pr-12"
+      className="flex shrink-0 items-center gap-x-14 pr-14"
     >
       {partners.map((p) => (
         <li
           key={p.name}
-          className="flex items-center gap-2 text-zinc-500 transition hover:text-zinc-200"
+          className="flex items-center gap-2.5 text-[#3D4555] transition-colors duration-300 hover:text-[#C9A84C]"
           title={p.name}
         >
           <svg
@@ -43,7 +43,7 @@ function PartnerList({ ariaHidden = false }: { ariaHidden?: boolean }) {
           >
             <path d={p.path} />
           </svg>
-          <span className="text-sm font-medium">{p.name}</span>
+          <span className="text-sm font-medium tracking-wide">{p.name}</span>
         </li>
       ))}
     </ul>
@@ -52,12 +52,21 @@ function PartnerList({ ariaHidden = false }: { ariaHidden?: boolean }) {
 
 export default function PoweredByMarquee() {
   return (
-    <section className="border-t border-white/5 bg-zinc-900/30">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <p className="text-center text-xs font-medium uppercase tracking-widest text-zinc-500">
+    <section className="relative border-y border-[rgba(201,168,76,0.06)] bg-[#070910]">
+      {/* Edge fade masks */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#070910] to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#070910] to-transparent"
+      />
+      <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8">
+        <p className="text-center text-xs font-medium uppercase tracking-[0.35em] text-[#C9A84C]">
           Powered by the same tools the world&apos;s biggest companies use
         </p>
-        <div className="group mt-7 overflow-hidden">
+        <div className="group mt-8 overflow-hidden">
           <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
             <PartnerList />
             <PartnerList ariaHidden />

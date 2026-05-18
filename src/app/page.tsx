@@ -11,8 +11,10 @@ import SiteFooter from "./components/SiteFooter";
 
 const CALENDLY_URL = "https://calendly.com/znthsolutions/30min";
 const CONTACT_EMAIL = "hello@zenithai.ca";
-const CONTACT_PHONE_DISPLAY = "(613) 416-5158";
-const CONTACT_PHONE_TEL = "+16134165158";
+const CONTACT_PHONES = [
+  { display: "(613) 416-5158", tel: "+16134165158" },
+  { display: "(613) 668-6851", tel: "+16136686851" },
+];
 const CONTACT_FORM_ACTION = "mailto:hello@zenithai.ca";
 
 export default function Home() {
@@ -33,16 +35,14 @@ export default function Home() {
         <CTA
           calendlyUrl={CALENDLY_URL}
           contactEmail={CONTACT_EMAIL}
-          contactPhoneDisplay={CONTACT_PHONE_DISPLAY}
-          contactPhoneTel={CONTACT_PHONE_TEL}
+          contactPhones={CONTACT_PHONES}
           formAction={CONTACT_FORM_ACTION}
         />
       </main>
       <SiteFooter
         calendlyUrl={CALENDLY_URL}
         contactEmail={CONTACT_EMAIL}
-        contactPhoneDisplay={CONTACT_PHONE_DISPLAY}
-        contactPhoneTel={CONTACT_PHONE_TEL}
+        contactPhones={CONTACT_PHONES}
       />
     </div>
   );

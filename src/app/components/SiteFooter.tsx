@@ -1,11 +1,12 @@
 import { ArrowUpRight } from "lucide-react";
 import ZenithMark from "./ZenithMark";
 
+type ContactPhone = { display: string; tel: string };
+
 type FooterProps = {
   calendlyUrl: string;
   contactEmail: string;
-  contactPhoneDisplay: string;
-  contactPhoneTel: string;
+  contactPhones: ContactPhone[];
 };
 
 function MapleLeaf({ className = "" }: { className?: string }) {
@@ -24,8 +25,7 @@ function MapleLeaf({ className = "" }: { className?: string }) {
 export default function SiteFooter({
   calendlyUrl,
   contactEmail,
-  contactPhoneDisplay,
-  contactPhoneTel,
+  contactPhones,
 }: FooterProps) {
   return (
     <footer className="relative border-t border-[rgba(201,168,76,0.08)] bg-[#03040A]">
@@ -34,14 +34,10 @@ export default function SiteFooter({
           <div className="md:col-span-1">
             <a
               href="#top"
-              className="inline-flex items-center gap-3"
+              className="inline-flex items-center"
               aria-label="Zenith AI — home"
             >
-              <ZenithMark className="h-10 w-10" />
-              <span className="flex items-baseline gap-1.5 font-[var(--font-playfair)] text-xl tracking-[0.18em] text-[#F0F2FF]">
-                ZENITH
-                <span className="text-[#00D4FF]">AI</span>
-              </span>
+              <ZenithMark className="h-12 w-auto" />
             </a>
             <p className="mt-5 text-sm leading-relaxed text-[#B0B8C6]">
               AI-powered marketing for Ottawa small businesses. Built faster,
@@ -118,14 +114,16 @@ export default function SiteFooter({
               Get in touch
             </p>
             <ul className="mt-5 space-y-3 text-sm text-[#B0B8C6]">
-              <li>
-                <a
-                  href={`tel:${contactPhoneTel}`}
-                  className="transition-colors hover:text-[#F0F2FF]"
-                >
-                  {contactPhoneDisplay}
-                </a>
-              </li>
+              {contactPhones.map((phone) => (
+                <li key={phone.tel}>
+                  <a
+                    href={`tel:${phone.tel}`}
+                    className="transition-colors hover:text-[#F0F2FF]"
+                  >
+                    {phone.display}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a
                   href={`mailto:${contactEmail}`}

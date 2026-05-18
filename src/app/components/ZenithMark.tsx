@@ -1,84 +1,86 @@
 export default function ZenithMark({ className = "" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 40 40"
+      viewBox="0 0 760 160"
       fill="none"
       className={className}
-      aria-hidden="true"
+      role="img"
+      aria-label="Zenith AI"
     >
-      <defs>
-        <linearGradient id="zenith-mark-gold" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FFE08A" />
-          <stop offset="50%" stopColor="#C9A84C" />
-          <stop offset="100%" stopColor="#8A6F2A" />
-        </linearGradient>
-      </defs>
+      {/* ---------- Constellation Z mark (160×160 at left) ---------- */}
+      {/* Connecting lines */}
+      <line
+        x1="20"
+        y1="20"
+        x2="140"
+        y2="20"
+        stroke="#d4a85a"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <line
+        x1="140"
+        y1="20"
+        x2="20"
+        y2="140"
+        stroke="#d4a85a"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <line
+        x1="20"
+        y1="140"
+        x2="140"
+        y2="140"
+        stroke="#d4a85a"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
 
-      {/* Soft glow halo */}
-      <g opacity="0.18">
-        <line
-          x1="4"
-          y1="8"
-          x2="36"
-          y2="8"
-          stroke="#C9A84C"
-          strokeWidth="6"
-          strokeLinecap="round"
+      {/* Corner nodes */}
+      <circle cx="20" cy="20" r="6" fill="#d4a85a" />
+      <circle cx="140" cy="20" r="6" fill="#d4a85a" />
+      <circle cx="20" cy="140" r="6" fill="#d4a85a" />
+      <circle cx="140" cy="140" r="6" fill="#d4a85a" />
+
+      {/* 8-point compass star — cardinal + diagonal — centered in the mark */}
+      <g transform="translate(80 80)">
+        {/* Cardinal points (N/E/S/W) */}
+        <path
+          d="M 0,-26 L 3,-3 L 26,0 L 3,3 L 0,26 L -3,3 L -26,0 L -3,-3 Z"
+          fill="#4ab8e0"
         />
-        <line
-          x1="36"
-          y1="8"
-          x2="4"
-          y2="32"
-          stroke="#C9A84C"
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
-        <line
-          x1="4"
-          y1="32"
-          x2="36"
-          y2="32"
-          stroke="#C9A84C"
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
+        {/* Diagonal points (NE/SE/SW/NW), rotated 45° */}
+        <g transform="rotate(45)">
+          <path
+            d="M 0,-18 L 2,-2 L 18,0 L 2,2 L 0,18 L -2,2 L -18,0 L -2,-2 Z"
+            fill="#4ab8e0"
+            opacity="0.85"
+          />
+        </g>
+        {/* White center pinprick */}
+        <circle cx="0" cy="0" r="3" fill="#ffffff" />
       </g>
 
-      {/* Sharp blueprint "Z" */}
-      <line
-        x1="4"
-        y1="8"
-        x2="36"
-        y2="8"
-        stroke="url(#zenith-mark-gold)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <line
-        x1="36"
-        y1="8"
-        x2="4"
-        y2="32"
-        stroke="url(#zenith-mark-gold)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <line
-        x1="4"
-        y1="32"
-        x2="36"
-        y2="32"
-        stroke="url(#zenith-mark-gold)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-
-      {/* Corner dots — architectural blueprint nodes */}
-      <circle cx="4" cy="8" r="1.5" fill="#FFE08A" />
-      <circle cx="36" cy="8" r="1.5" fill="#FFE08A" />
-      <circle cx="4" cy="32" r="1.5" fill="#FFE08A" />
-      <circle cx="36" cy="32" r="1.5" fill="#FFE08A" />
+      {/* ---------- Wordmark: the Z is the mark, text continues with ENITH ---------- */}
+      <text x="180" y="115" fontFamily="Georgia, serif">
+        <tspan
+          fontSize="100"
+          fontWeight="700"
+          letterSpacing="8"
+          fill="#F0F2FF"
+        >
+          ENITH
+        </tspan>
+        <tspan
+          fontSize="82"
+          fontStyle="italic"
+          fill="#4ab8e0"
+          dx="22"
+        >
+          AI
+        </tspan>
+      </text>
     </svg>
   );
 }

@@ -20,29 +20,29 @@ const HEADLINE_WORD_OFFSETS: number[] = (() => {
   return offsets;
 })();
 
+type ContactPhone = { display: string; tel: string };
+
 type CTAProps = {
   calendlyUrl: string;
   contactEmail: string;
-  contactPhoneDisplay: string;
-  contactPhoneTel: string;
+  contactPhones: ContactPhone[];
   formAction: string;
 };
 
 const inputClass =
-  "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-[#F0F2FF] placeholder:text-[#3D4555] transition-all duration-200 focus:border-[rgba(201,168,76,0.4)] focus:outline-none focus:ring-1 focus:ring-[rgba(201,168,76,0.25)]";
+  "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-[#F0F2FF] placeholder:text-[#8892A4] transition-all duration-200 focus:border-[rgba(201,168,76,0.4)] focus:outline-none focus:ring-1 focus:ring-[rgba(201,168,76,0.25)]";
 
 export default function CTA({
   calendlyUrl,
   contactEmail,
-  contactPhoneDisplay,
-  contactPhoneTel,
+  contactPhones,
   formAction,
 }: CTAProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const beamRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedPhoneIdx, setCopiedPhoneIdx] = useState<number | null>(null);
 
   useGSAP(
     () => {
@@ -74,6 +74,16 @@ export default function CTA({
       await navigator.clipboard.writeText(value);
       setFlag(true);
       window.setTimeout(() => setFlag(false), 1800);
+    } catch {
+      /* clipboard unavailable — no-op */
+    }
+  };
+
+  const copyPhone = async (idx: number, value: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedPhoneIdx(idx);
+      window.setTimeout(() => setCopiedPhoneIdx(null), 1800);
     } catch {
       /* clipboard unavailable — no-op */
     }
@@ -139,7 +149,7 @@ export default function CTA({
             delay: HEADLINE.length * 0.025 + 0.2,
             ease: "easeOut",
           }}
-          className="mx-auto mt-6 max-w-xl text-[#8892A4]"
+          className="mx-auto mt-6 max-w-xl text-[#C8CFDB]"
         >
           Book a free consultation. We&apos;ll look at where you are now,
           what&apos;s working, and what an AI-powered marketing setup would do
@@ -182,7 +192,7 @@ export default function CTA({
           }}
           className="mx-auto mt-10 max-w-md"
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-[#3D4555]">
+          <p className="text-xs uppercase tracking-[0.3em] text-[#8892A4]">
             or send a quick message
           </p>
           <form
@@ -228,31 +238,35 @@ export default function CTA({
             duration: 0.6,
             delay: HEADLINE.length * 0.025 + 0.7,
           }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 text-sm text-[#8892A4] sm:flex-row sm:gap-6"
+          className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-[#B0B8C6]"
         >
-          <button
-            type="button"
-            onClick={() => copy(contactPhoneTel, setCopiedPhone)}
-            className="group/contact inline-flex items-center gap-2 transition-colors hover:text-[#F0F2FF]"
-            aria-label={`Copy phone number ${contactPhoneDisplay}`}
-          >
-            <a
-              href={`tel:${contactPhoneTel}`}
-              className="underline-offset-4 hover:underline"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {contactPhoneDisplay}
-            </a>
-            {copiedPhone ? (
-              <Check size={13} className="text-emerald-400" />
-            ) : (
-              <Copy
-                size={13}
-                className="opacity-50 transition-opacity group-hover/contact:opacity-100"
-              />
-            )}
-          </button>
-          <span className="hidden text-[#3D4555] sm:inline">·</span>
+          {contactPhones.map((phone, i) => (
+            <Fragment key={phone.tel}>
+              <button
+                type="button"
+                onClick={() => copyPhone(i, phone.tel)}
+                className="group/contact inline-flex items-center gap-2 transition-colors hover:text-[#F0F2FF]"
+                aria-label={`Copy phone number ${phone.display}`}
+              >
+                <a
+                  href={`tel:${phone.tel}`}
+                  className="underline-offset-4 hover:underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {phone.display}
+                </a>
+                {copiedPhoneIdx === i ? (
+                  <Check size={13} className="text-emerald-400" />
+                ) : (
+                  <Copy
+                    size={13}
+                    className="opacity-50 transition-opacity group-hover/contact:opacity-100"
+                  />
+                )}
+              </button>
+              <span className="hidden text-[#8892A4] sm:inline">·</span>
+            </Fragment>
+          ))}
           <button
             type="button"
             onClick={() => copy(contactEmail, setCopiedEmail)}

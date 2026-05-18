@@ -48,14 +48,10 @@ export default function SiteNav({ calendlyUrl }: { calendlyUrl: string }) {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
         <a
           href="#top"
-          className="group flex items-center gap-3"
+          className="group flex items-center"
           aria-label="Zenith AI — home"
         >
-          <ZenithMark className="h-8 w-8 transition-transform duration-500 group-hover:rotate-3" />
-          <span className="flex items-baseline gap-1.5 font-[var(--font-playfair)] text-lg tracking-[0.18em] text-[#F0F2FF]">
-            ZENITH
-            <span className="text-[#00D4FF]">AI</span>
-          </span>
+          <ZenithMark className="h-11 w-auto transition-opacity duration-500 group-hover:opacity-90" />
         </a>
 
         <nav className="hidden items-center gap-10 text-sm tracking-wide text-[#8892A4] md:flex">

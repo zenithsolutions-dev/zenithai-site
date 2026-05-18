@@ -96,6 +96,90 @@ export const metadata: Metadata = {
   },
 };
 
+// LocalBusiness JSON-LD — helps Google understand who/where we are for
+// local SEO, knowledge panel eligibility, and "businesses near me" results.
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MarketingAgency",
+  "@id": `${SITE_URL}/#organization`,
+  name: "Zenith AI",
+  url: SITE_URL,
+  logo: `${SITE_URL}/og-image.svg`,
+  image: `${SITE_URL}/og-image.svg`,
+  description: DESCRIPTION,
+  email: "hello@zenithai.ca",
+  telephone: "+16134165158",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "5516 Osgoode Main St, Unit 101",
+    addressLocality: "Osgoode",
+    addressRegion: "ON",
+    postalCode: "K0A 2W0",
+    addressCountry: "CA",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Ottawa",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+16134165158",
+      contactType: "customer service",
+      email: "hello@zenithai.ca",
+      areaServed: "CA",
+      availableLanguage: ["English"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+16136686851",
+      contactType: "customer service",
+      areaServed: "CA",
+      availableLanguage: ["English"],
+    },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Marketing Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Website Design",
+          description:
+            "Modern, mobile-first websites built fast for Ottawa small businesses.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Local SEO",
+          description:
+            "Google Business Profile setup and local content to rank in Ottawa search results.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Social Media Management",
+          description:
+            "Fully managed Instagram and Facebook content for Ottawa businesses.",
+        },
+      },
+    ],
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -107,6 +191,12 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#070910]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd),
+          }}
+        />
         <SmoothScroll>{children}</SmoothScroll>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}

@@ -100,7 +100,7 @@ export const metadata: Metadata = {
 // local SEO, knowledge panel eligibility, and "businesses near me" results.
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": "MarketingAgency",
+  "@type": ["LocalBusiness", "ProfessionalService"],
   "@id": `${SITE_URL}/#organization`,
   name: "Zenith AI",
   url: SITE_URL,

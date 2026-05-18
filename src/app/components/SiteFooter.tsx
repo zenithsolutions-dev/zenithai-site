@@ -142,7 +142,20 @@ export default function SiteFooter({
                   Book a call <ArrowUpRight size={13} />
                 </a>
               </li>
-              <li className="pt-1 text-[#8892A4]">Ottawa, Canada</li>
+              <li className="pt-1">
+                <address className="not-italic leading-relaxed text-[#8892A4]">
+                  <a
+                    href="https://maps.google.com/?q=5516+Osgoode+Main+St+Unit+101+Osgoode+ON+K0A+2W0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-[#F0F2FF]"
+                  >
+                    5516 Osgoode Main St, Unit 101
+                    <br />
+                    Osgoode, ON K0A 2W0
+                  </a>
+                </address>
+              </li>
             </ul>
           </div>
         </div>

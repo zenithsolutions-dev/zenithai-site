@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
-const line1Words = ["Your", "Marketing."];
+const line1Words = ["Your", "Marketing"];
 const line2Words = ["Elevated."];
 
 export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
@@ -91,6 +91,15 @@ export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
           className="mt-6 font-[var(--font-playfair)] text-xl italic text-[#8892A4] sm:text-2xl"
         >
           Built by AI. Run by people.
+        </motion.p>
+
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.7, ease: "easeOut" }}
+          className="mt-3 text-sm font-semibold tracking-widest uppercase text-cyan-400"
+        >
+          ⚡ Ottawa&apos;s First AI Marketing Agency
         </motion.p>
 
         <motion.p

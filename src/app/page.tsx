@@ -4,6 +4,9 @@ import DashboardMockup from "./components/DashboardMockup";
 import PoweredByMarquee from "./components/PoweredByMarquee";
 import SiteNav from "./components/SiteNav";
 import Services from "./components/Services";
+import AIServices from "./components/AIServices";
+import OurWork from "./components/OurWork";
+import TrustedBy from "./components/TrustedBy";
 import HowWeWork from "./components/HowWeWork";
 import SuccessCards from "./components/SuccessCards";
 import CTA from "./components/CTA";
@@ -12,7 +15,6 @@ import SiteFooter from "./components/SiteFooter";
 const CALENDLY_URL = "https://calendly.com/znthsolutions/30min";
 const CONTACT_EMAIL = "hello@zenithai.ca";
 const CONTACT_PHONES = [
-  { display: "(613) 416-5158", tel: "+16134165158" },
   { display: "(613) 668-6851", tel: "+16136686851" },
 ];
 const CONTACT_FORM_ACTION = "mailto:hello@zenithai.ca";
@@ -29,6 +31,9 @@ export default function Home() {
         <DashboardSection />
         <PoweredByMarquee />
         <Services />
+        <AIServices />
+        <OurWork />
+        <TrustedBy />
         <StatBand />
         <HowWeWork />
         <SuccessCards />

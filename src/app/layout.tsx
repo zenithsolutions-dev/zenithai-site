@@ -108,7 +108,7 @@ const localBusinessJsonLd = {
   image: `${SITE_URL}/og-image.svg`,
   description: DESCRIPTION,
   email: "hello@zenithai.ca",
-  telephone: "+16134165158",
+  telephone: "+16136686851",
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
@@ -131,16 +131,9 @@ const localBusinessJsonLd = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+16134165158",
-      contactType: "customer service",
-      email: "hello@zenithai.ca",
-      areaServed: "CA",
-      availableLanguage: ["English"],
-    },
-    {
-      "@type": "ContactPoint",
       telephone: "+16136686851",
       contactType: "customer service",
+      email: "hello@zenithai.ca",
       areaServed: "CA",
       availableLanguage: ["English"],
     },

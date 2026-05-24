@@ -88,28 +88,30 @@ export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.7, ease: "easeOut" }}
-          className="mt-6 font-[var(--font-playfair)] text-xl italic text-[#8892A4] sm:text-2xl"
+          className="mt-3 text-sm font-semibold tracking-widest uppercase text-cyan-400"
         >
-          Built by AI. Run by people.
+          ⚡ Ottawa&apos;s AI Marketing &amp; Automation Agency
         </motion.p>
 
         <motion.p
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.7, ease: "easeOut" }}
-          className="mt-3 text-sm font-semibold tracking-widest uppercase text-cyan-400"
+          className="mt-6 max-w-2xl font-[var(--font-playfair)] text-xl italic leading-relaxed text-[#B0B8C6] sm:text-2xl"
         >
-          ⚡ Ottawa&apos;s First AI Marketing Agency
+          Not just marketing. We build AI systems that work while you sleep —
+          automating your business, generating leads, and keeping you ahead.
         </motion.p>
 
         <motion.p
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.7, ease: "easeOut" }}
-          className="mt-8 max-w-2xl text-base leading-relaxed text-[#8892A4] sm:text-lg"
+          className="mt-6 max-w-2xl text-base leading-relaxed text-[#8892A4] sm:text-lg"
         >
-          Websites, SEO, and social media for Ottawa small businesses — built
-          faster, priced for what local businesses can actually afford.
+          Websites, SEO, social media, AI chatbots, and custom automation —
+          built for Ottawa businesses that want to grow faster without hiring
+          more people.
         </motion.p>
 
         <motion.div

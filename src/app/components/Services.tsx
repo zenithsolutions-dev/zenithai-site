@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Globe, Megaphone, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Check, Globe, Megaphone, TrendingUp } from "lucide-react";
 import type { ComponentType } from "react";
 
 type Service = {
@@ -211,6 +211,30 @@ export default function Services() {
             </p>
           </div>
         </motion.div>
+
+        {/* No-commitment trust line — reinforces the Monthly tier's
+            "Cancel anytime" inside the card and assures buyers across both
+            tiers that there's no long-term lock-in. */}
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{
+            duration: 0.6,
+            delay: 0.75,
+            ease: "easeOut",
+          }}
+          className="mt-6 flex items-center justify-center gap-2 text-center text-sm text-zinc-400"
+        >
+          <Check
+            size={16}
+            className="flex-shrink-0 text-[#C9A84C]"
+            aria-hidden
+          />
+          <span>
+            Month-to-month contracts — cancel anytime, no questions asked.
+          </span>
+        </motion.p>
       </div>
     </section>
   );

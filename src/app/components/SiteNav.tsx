@@ -1,15 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import ZenithMark from "./ZenithMark";
 
+// Absolute paths so the anchor links work whether the visitor is on the
+// home page or one of the dedicated /about, /pricing, /contact pages.
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#how", label: "How we work" },
-  { href: "#examples", label: "Results" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#services", label: "Services" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/#examples", label: "Results" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function SiteNav({ calendlyUrl }: { calendlyUrl: string }) {
@@ -46,23 +50,23 @@ export default function SiteNav({ calendlyUrl }: { calendlyUrl: string }) {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
-        <a
-          href="#top"
+        <Link
+          href="/#top"
           className="group flex items-center"
           aria-label="Zenith AI — home"
         >
           <ZenithMark className="h-11 w-auto transition-opacity duration-500 group-hover:opacity-90" />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-10 text-sm tracking-wide text-[#8892A4] md:flex">
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               className="relative transition-colors duration-300 hover:text-[#F0F2FF]"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

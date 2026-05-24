@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import ZenithMark from "./ZenithMark";
 
@@ -51,28 +52,36 @@ export default function SiteFooter({
             </p>
             <ul className="mt-5 space-y-3 text-sm text-[#B0B8C6]">
               <li>
-                <a
-                  href="#services"
+                <Link
+                  href="/#services"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   Websites
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
+                <Link
+                  href="/#services"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   Local SEO
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
+                <Link
+                  href="/#services"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   Social media
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/pricing"
+                  className="transition-colors hover:text-[#F0F2FF]"
+                >
+                  Pricing
+                </Link>
               </li>
             </ul>
           </div>
@@ -83,28 +92,36 @@ export default function SiteFooter({
             </p>
             <ul className="mt-5 space-y-3 text-sm text-[#B0B8C6]">
               <li>
-                <a
-                  href="#how"
+                <Link
+                  href="/about"
+                  className="transition-colors hover:text-[#F0F2FF]"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#how"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   How we work
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#examples"
+                <Link
+                  href="/#examples"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   Results
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  href="/contact"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

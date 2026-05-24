@@ -67,7 +67,7 @@ export default function AIServices() {
         <div className="absolute -bottom-32 left-1/4 h-[400px] w-[400px] rounded-full bg-[#C9A84C]/5 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-32 sm:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-32">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,15 +76,17 @@ export default function AIServices() {
           className="mb-16 max-w-3xl"
         >
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.35em] text-[#C9A84C]">
-            What&apos;s next
+            AI upgrades · add-on tier
           </p>
           <h2 className="font-[var(--font-playfair)] text-4xl tracking-tight text-[#F0F2FF] sm:text-6xl">
-            Your Gateway to{" "}
-            <span className="italic text-[#8892A4]">AI Services.</span>
+            Layer on{" "}
+            <span className="italic text-[#8892A4]">AI that actually ships.</span>
           </h2>
           <p className="mt-6 max-w-xl text-[#8892A4]">
-            We help Ottawa businesses leverage AI to automate, grow, and stay
-            ahead in this new era of technology.
+            Already covered on the basics? Add one of these to automate the
+            work that&apos;s eating your week — chatbots that answer customers
+            after hours, workflows that run themselves, custom tools built for
+            your specific business.
           </p>
         </motion.div>
 

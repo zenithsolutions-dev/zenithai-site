@@ -57,7 +57,7 @@ function ChromoraSvg() {
         fontSize="26"
         fontWeight="300"
         letterSpacing="0.015em"
-        fill="#8B7355"
+        fill="#5C4A35"
       >
         Chromora
       </text>

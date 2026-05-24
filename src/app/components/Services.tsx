@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Globe, Megaphone, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Check, Globe, Megaphone, TrendingUp } from "lucide-react";
 import type { ComponentType } from "react";
 
 type Service = {
@@ -65,7 +65,7 @@ export default function Services() {
         <div className="absolute -bottom-32 right-1/4 h-[400px] w-[400px] rounded-full bg-[#00D4FF]/5 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-32 sm:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-32">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ export default function Services() {
           className="mb-16 max-w-3xl"
         >
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.35em] text-[#C9A84C]">
-            What we offer
+            Core marketing
           </p>
           <h2 className="font-[var(--font-playfair)] text-4xl tracking-tight text-[#F0F2FF] sm:text-6xl">
             Three services.{" "}
@@ -82,7 +82,15 @@ export default function Services() {
           </h2>
           <p className="mt-6 max-w-xl text-[#8892A4]">
             Pick what you need. Every package is priced up front — no
-            agency-style billable hours, no hidden fees.
+            agency-style billable hours, no hidden fees. Want more? Layer on
+            an{" "}
+            <a
+              href="#ai-services"
+              className="text-[#C9A84C] underline-offset-4 transition-colors hover:text-[#FFE08A] hover:underline"
+            >
+              AI upgrade
+            </a>{" "}
+            below.
           </p>
         </motion.div>
 
@@ -156,7 +164,7 @@ export default function Services() {
           ))}
         </div>
 
-        {/* One-time purchase option banner */}
+        {/* Two-tier pricing comparison */}
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -166,23 +174,67 @@ export default function Services() {
             delay: 0.5,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="relative mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.3)] bg-gradient-to-r from-[#C9A84C]/[0.04] via-[#FFE08A]/[0.08] to-[#C9A84C]/[0.04] p-6 text-center sm:p-7"
+          className="relative mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2"
         >
-          <div
-            aria-hidden
-            className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/60 to-transparent"
-          />
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
-            One-time option
-          </p>
-          <p className="mt-3 text-base text-[#F0F2FF] sm:text-lg">
-            Prefer to own it outright?{" "}
-            <span className="font-medium text-[#FFE08A]">
-              One-time package from $499.99
-            </span>{" "}
-            <span className="text-[#B0B8C6]">+ $50/year hosting</span>
-          </p>
+          {/* Monthly */}
+          <div className="relative overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.3)] bg-gradient-to-br from-[#C9A84C]/[0.06] to-transparent p-6 sm:p-7">
+            <div
+              aria-hidden
+              className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/60 to-transparent"
+            />
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
+              Monthly · most popular
+            </p>
+            <p className="mt-3 font-[var(--font-playfair)] text-3xl text-[#FFE08A] [text-shadow:0_0_30px_rgba(201,168,76,0.4)]">
+              From $49.99<span className="text-base text-[#B0B8C6]">/mo</span>
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#8892A4]">
+              Ongoing strategy, updates, hosting, and support — all included.
+              Cancel anytime.
+            </p>
+          </div>
+
+          {/* One-time */}
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-7">
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#8892A4]">
+              One-time · own it forever
+            </p>
+            <p className="mt-3 font-[var(--font-playfair)] text-3xl text-[#F0F2FF]">
+              From $499.99<span className="text-base text-[#B0B8C6]">
+                {" "}
+                once
+              </span>
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#8892A4]">
+              Buy your site outright. You own the code, no vendor lock-in.{" "}
+              <span className="text-[#B0B8C6]">+ $50/year hosting</span> only.
+            </p>
+          </div>
         </motion.div>
+
+        {/* No-commitment trust line — reinforces the Monthly tier's
+            "Cancel anytime" inside the card and assures buyers across both
+            tiers that there's no long-term lock-in. */}
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{
+            duration: 0.6,
+            delay: 0.75,
+            ease: "easeOut",
+          }}
+          className="mt-6 flex items-center justify-center gap-2 text-center text-sm text-zinc-400"
+        >
+          <Check
+            size={16}
+            className="flex-shrink-0 text-[#C9A84C]"
+            aria-hidden
+          />
+          <span>
+            Month-to-month contracts — cancel anytime, no questions asked.
+          </span>
+        </motion.p>
       </div>
     </section>
   );

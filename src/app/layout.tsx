@@ -3,9 +3,16 @@ import { Geist_Mono, Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
+import SiteNav from "./components/SiteNav";
+import SiteFooter from "./components/SiteFooter";
+import {
+  CALENDLY_URL,
+  CONTACT_EMAIL,
+  CONTACT_PHONES,
+  SITE_URL,
+} from "./lib/site";
 
 const GA_MEASUREMENT_ID = "G-XP8E45R1L7";
-const SITE_URL = "https://zenithai.ca";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -63,20 +70,16 @@ export const metadata: Metadata = {
     siteName: "Zenith AI",
     title: TITLE,
     description: DESCRIPTION,
-    images: [
-      {
-        url: "/og-image.svg",
-        width: 1200,
-        height: 630,
-        alt: "Zenith AI — AI-powered marketing for Ottawa small businesses",
-      },
-    ],
+    // Note: og:image is auto-generated from src/app/opengraph-image.tsx
+    // (PNG, 1200×630). Explicit `images` field omitted on purpose so the
+    // App Router convention file takes over — fixes the prior SVG that
+    // Facebook/LinkedIn/Slack refused to render.
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/og-image.svg"],
+    // Twitter image also picked up from opengraph-image.tsx automatically.
   },
   robots: {
     index: true,
@@ -190,7 +193,20 @@ export default function RootLayout({
             __html: JSON.stringify(localBusinessJsonLd),
           }}
         />
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <div
+            id="top"
+            className="flex flex-1 flex-col bg-[#03040A] text-[#F0F2FF]"
+          >
+            <SiteNav calendlyUrl={CALENDLY_URL} />
+            <main className="flex-1">{children}</main>
+            <SiteFooter
+              calendlyUrl={CALENDLY_URL}
+              contactEmail={CONTACT_EMAIL}
+              contactPhones={[...CONTACT_PHONES]}
+            />
+          </div>
+        </SmoothScroll>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"

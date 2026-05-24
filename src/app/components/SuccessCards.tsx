@@ -67,7 +67,7 @@ export default function SuccessCards() {
         <div className="absolute top-0 left-1/2 h-64 w-[800px] -translate-x-1/2 bg-gradient-to-b from-[#C9A84C]/8 to-transparent blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-32 sm:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-32">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

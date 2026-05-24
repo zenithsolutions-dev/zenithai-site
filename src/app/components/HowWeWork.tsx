@@ -68,7 +68,7 @@ export default function HowWeWork() {
       id="how"
       className="relative border-t border-[rgba(201,168,76,0.08)] bg-[#070910]"
     >
-      <div className="mx-auto max-w-7xl px-6 py-32 sm:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-32">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

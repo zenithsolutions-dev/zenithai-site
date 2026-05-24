@@ -143,7 +143,7 @@ export default function OurWork() {
 
   return (
     <section
-      id="examples"
+      id="portfolio"
       className="relative border-t border-[rgba(201,168,76,0.08)] bg-[#070910]"
     >
       <div
@@ -153,7 +153,7 @@ export default function OurWork() {
         <div className="absolute top-1/3 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#C9A84C]/4 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-32 sm:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-32">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -162,14 +162,16 @@ export default function OurWork() {
           className="mb-16 max-w-3xl"
         >
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.35em] text-[#C9A84C]">
-            Our work
+            Featured case studies
           </p>
           <h2 className="font-[var(--font-playfair)] text-4xl tracking-tight text-[#F0F2FF] sm:text-6xl">
-            Websites we&apos;ve{" "}
-            <span className="italic text-[#8892A4]">built.</span>
+            Two builds, in depth —{" "}
+            <span className="italic text-[#8892A4]">live and shipping.</span>
           </h2>
           <p className="mt-6 max-w-xl text-[#8892A4]">
-            Real businesses, real results — built and launched by Zenith AI.
+            A closer look at two recent projects. Click through to see them
+            running in production — the rest of our client roster sits in the
+            marquee at the top of the page.
           </p>
         </motion.div>
 

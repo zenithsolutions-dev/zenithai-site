@@ -107,7 +107,7 @@ export default function CTA({
         className="pointer-events-none absolute left-1/2 top-0 h-32 w-px -translate-x-1/2 bg-gradient-to-b from-[#FFE08A] to-transparent opacity-60"
       />
 
-      <div className="relative mx-auto max-w-3xl px-6 py-36 text-center sm:px-8">
+      <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:px-8 sm:py-36">
         <h2
           aria-label={HEADLINE}
           className="text-balance font-[var(--font-playfair)] text-4xl tracking-tight text-[#F0F2FF] sm:text-6xl"

@@ -2,54 +2,51 @@ import ParallaxBackdrop from "./components/ParallaxBackdrop";
 import HeroText from "./components/HeroText";
 import DashboardMockup from "./components/DashboardMockup";
 import PoweredByMarquee from "./components/PoweredByMarquee";
-import SiteNav from "./components/SiteNav";
 import Services from "./components/Services";
 import AIServices from "./components/AIServices";
 import OurWork from "./components/OurWork";
 import TrustedBy from "./components/TrustedBy";
 import HowWeWork from "./components/HowWeWork";
 import SuccessCards from "./components/SuccessCards";
+import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
-import SiteFooter from "./components/SiteFooter";
+import {
+  CALENDLY_URL,
+  CONTACT_EMAIL,
+  CONTACT_FORM_ACTION,
+  CONTACT_PHONES,
+} from "./lib/site";
 
-const CALENDLY_URL = "https://calendly.com/znthsolutions/30min";
-const CONTACT_EMAIL = "hello@zenithai.ca";
-const CONTACT_PHONES = [
-  { display: "(613) 668-6851", tel: "+16136686851" },
-];
-const CONTACT_FORM_ACTION = "mailto:hello@zenithai.ca";
-
+/**
+ * Section order (post-audit):
+ *   Hero → TrustedBy (immediate proof) → StatBand (why us) →
+ *   Services (consolidated, with AI upgrade hand-off) → AIServices
+ *   (positioned as upgrade tier) → HowWeWork → OurWork (case studies) →
+ *   SuccessCards (metric proof) → Testimonials (voice proof) →
+ *   DashboardSection (feature beat) → PoweredByMarquee (tech stack) →
+ *   CTA. SiteNav + SiteFooter live in layout.tsx now.
+ */
 export default function Home() {
   return (
-    <div
-      id="top"
-      className="flex flex-1 flex-col bg-[#03040A] text-[#F0F2FF]"
-    >
-      <SiteNav calendlyUrl={CALENDLY_URL} />
-      <main className="flex-1">
-        <Hero />
-        <DashboardSection />
-        <PoweredByMarquee />
-        <Services />
-        <AIServices />
-        <OurWork />
-        <TrustedBy />
-        <StatBand />
-        <HowWeWork />
-        <SuccessCards />
-        <CTA
-          calendlyUrl={CALENDLY_URL}
-          contactEmail={CONTACT_EMAIL}
-          contactPhones={CONTACT_PHONES}
-          formAction={CONTACT_FORM_ACTION}
-        />
-      </main>
-      <SiteFooter
+    <>
+      <Hero />
+      <TrustedBy />
+      <StatBand />
+      <Services />
+      <AIServices />
+      <HowWeWork />
+      <OurWork />
+      <SuccessCards />
+      <Testimonials />
+      <DashboardSection />
+      <PoweredByMarquee />
+      <CTA
         calendlyUrl={CALENDLY_URL}
         contactEmail={CONTACT_EMAIL}
-        contactPhones={CONTACT_PHONES}
+        contactPhones={[...CONTACT_PHONES]}
+        formAction={CONTACT_FORM_ACTION}
       />
-    </div>
+    </>
   );
 }
 
@@ -75,8 +72,8 @@ function Hero() {
 function DashboardSection() {
   return (
     <section className="relative border-t border-[rgba(201,168,76,0.06)] bg-[#03040A]">
-      <div className="mx-auto max-w-6xl px-6 py-32 sm:px-8">
-        <div className="mb-16 text-center">
+      <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-32">
+        <div className="mb-12 text-center sm:mb-16">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.35em] text-[#C9A84C]">
             Inside the lobby
           </p>
@@ -100,8 +97,8 @@ const stats: { value: string; label: string }[] = [
 function StatBand() {
   return (
     <section className="border-t border-[rgba(201,168,76,0.08)] bg-[#070910]">
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-[#0D1017] via-[#070910] to-[#0D1017] p-10 text-center sm:p-16">
+      <div className="mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-24">
+        <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-[#0D1017] via-[#070910] to-[#0D1017] p-8 text-center sm:p-16">
           <div
             aria-hidden
             className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#C9A84C]/15 blur-3xl"
@@ -124,7 +121,7 @@ function StatBand() {
             didn&apos;t. That means small businesses get agency-quality work
             without agency-priced bills.
           </p>
-          <div className="relative mt-14 grid grid-cols-1 sm:grid-cols-3">
+          <div className="relative mt-12 grid grid-cols-1 sm:mt-14 sm:grid-cols-3">
             {stats.map((s, i) => (
               <div
                 key={s.label}
@@ -141,6 +138,13 @@ function StatBand() {
               </div>
             ))}
           </div>
+          {/* TODO(legal): confirm exact terms of the satisfaction guarantee
+              with the business owner and surface them here (e.g. refund
+              window, what triggers it). Leaving generic placeholder so the
+              "100%" claim has some falsifiable substance attached. */}
+          <p className="relative mt-6 text-[11px] tracking-wide text-[#8892A4]/70">
+            Not happy with our work? Tell us — we&apos;ll make it right.
+          </p>
         </div>
       </div>
     </section>

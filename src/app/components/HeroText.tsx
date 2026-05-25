@@ -2,10 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-const line1Words = ["Your", "Marketing"];
-const line2Words = ["Elevated."];
+const line1Words = ["We", "build", "the", "systems"];
+// Line 2 kept as a single phrase so the gold gradient and the underline-draw
+// flow continuously across all three words — the cinematic climax of the
+// hero stays a single sweep rather than three independent reveals.
+const line2Phrase = "behind modern businesses.";
 
 export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
   const reduceMotion = useReducedMotion();
@@ -42,8 +45,7 @@ export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8 text-xs font-medium uppercase tracking-[0.35em] text-[#C9A84C]"
         >
-          Ottawa <span className="mx-2 text-[#8892A4]">·</span> Canada
-          <span className="mx-2 text-[#8892A4]">·</span> AI-Powered
+          Ottawa <span className="mx-2 text-[#8892A4]">·</span> AI-Native Studio
         </motion.p>
 
         <h1 className="font-[var(--font-playfair)] text-5xl font-medium leading-[1.05] tracking-tight text-[#F0F2FF] sm:text-7xl lg:text-[5.5rem]">
@@ -62,25 +64,22 @@ export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
             ))}
           </span>
           <span className="block">
-            {line2Words.map((w, i) => (
-              <motion.span
-                key={`l2-${i}`}
-                custom={i + line1Words.length}
-                variants={wordVariants}
-                initial={reduceMotion ? false : "hidden"}
-                animate="show"
-                className="inline-block"
+            <motion.span
+              custom={line1Words.length}
+              variants={wordVariants}
+              initial={reduceMotion ? false : "hidden"}
+              animate="show"
+              className="inline-block"
+            >
+              <span
+                ref={underlineRef}
+                className={`hero-underline bg-gradient-to-r from-[#FFE08A] via-[#C9A84C] to-[#8A6F2A] bg-clip-text text-transparent ${
+                  underlineActive ? "in-view" : ""
+                }`}
               >
-                <span
-                  ref={underlineRef}
-                  className={`hero-underline bg-gradient-to-r from-[#FFE08A] via-[#C9A84C] to-[#8A6F2A] bg-clip-text text-transparent ${
-                    underlineActive ? "in-view" : ""
-                  }`}
-                >
-                  {w}
-                </span>
-              </motion.span>
-            ))}
+                {line2Phrase}
+              </span>
+            </motion.span>
           </span>
         </h1>
 
@@ -88,37 +87,17 @@ export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.7, ease: "easeOut" }}
-          className="mt-3 text-sm font-semibold tracking-widest uppercase text-cyan-400"
+          className="mt-8 max-w-2xl text-base leading-relaxed text-[#B0B8C6] sm:text-lg"
         >
-          ⚡ Ottawa&apos;s AI Marketing &amp; Automation Agency
-        </motion.p>
-
-        <motion.p
-          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1, duration: 0.7, ease: "easeOut" }}
-          className="mt-6 max-w-2xl font-[var(--font-playfair)] text-xl italic leading-relaxed text-[#B0B8C6] sm:text-2xl"
-        >
-          Not just marketing. We build AI systems that work while you sleep —
-          automating your business, generating leads, and keeping you ahead.
-        </motion.p>
-
-        <motion.p
-          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.7, ease: "easeOut" }}
-          className="mt-6 max-w-2xl text-base leading-relaxed text-[#8892A4] sm:text-lg"
-        >
-          Websites, SEO, social media, AI chatbots, and custom automation —
-          built for Ottawa businesses that want to grow faster without hiring
-          more people.
+          Websites, content, lead generation, and AI automations — designed to
+          help Ottawa businesses grow faster with smaller teams.
         </motion.p>
 
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.7, ease: "easeOut" }}
-          className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
+          transition={{ delay: 1.2, duration: 0.7, ease: "easeOut" }}
+          className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
         >
           <a
             href={calendlyUrl}
@@ -126,23 +105,39 @@ export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
             rel="noopener noreferrer"
             className="group/cta inline-flex items-center gap-2 rounded-full bg-[#C9A84C] px-7 py-3.5 text-sm font-medium tracking-wide text-[#070910] shadow-[0_0_30px_rgba(201,168,76,0.25)] transition-all duration-300 hover:bg-[#FFE08A] hover:shadow-[0_0_50px_rgba(201,168,76,0.5)]"
           >
-            Book Free Call
+            Talk to us
             <ArrowUpRight
               size={16}
               className="transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5"
             />
           </a>
           <a
-            href="#examples"
+            href="#portfolio"
             className="group/work inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-medium tracking-wide text-[#F0F2FF] backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/[0.06]"
           >
-            See Our Work
-            <ArrowDown
+            See our work
+            <ArrowRight
               size={16}
-              className="transition-transform duration-300 group-hover/work:translate-y-0.5"
+              className="transition-transform duration-300 group-hover/work:translate-x-0.5"
             />
           </a>
         </motion.div>
+
+        {/* Concrete trust signals replacing the vague "Free" framing.
+            text-zinc-400 stays readable on the parallax backdrop without
+            competing with the headline or CTAs. */}
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 0.6, ease: "easeOut" }}
+          className="mt-6 text-sm text-zinc-400"
+        >
+          Monthly plans
+          <span className="mx-2 text-[#C9A84C]/60">·</span>
+          Ottawa-based
+          <span className="mx-2 text-[#C9A84C]/60">·</span>
+          Built with AI from day one
+        </motion.p>
       </div>
     </div>
   );

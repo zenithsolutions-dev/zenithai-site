@@ -7,6 +7,10 @@ const securityHeaders = [
   },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  // Origin isolation — satisfies Lighthouse "Best Practices" COOP audit.
+  // `same-origin` is safe here: the only external link (Calendly) opens with
+  // target="_blank" rel="noopener", so nothing relies on window.opener.
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   {
     key: "Permissions-Policy",

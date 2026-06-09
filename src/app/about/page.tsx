@@ -6,7 +6,7 @@ import { CALENDLY_URL, BUSINESS_ADDRESS } from "../lib/site";
 export const metadata: Metadata = {
   title: "About — Ottawa's AI-native marketing agency",
   description:
-    "Zenith AI is a small, Ottawa-based marketing studio that uses AI to deliver agency-quality websites, SEO, and social media at a price small businesses can actually afford.",
+    "Zenith AI is a small, Ottawa-based marketing studio using AI to deliver agency-quality websites, SEO, and social media at prices small businesses can afford.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About Zenith AI — Ottawa's AI-native marketing agency",

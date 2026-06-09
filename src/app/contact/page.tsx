@@ -9,7 +9,7 @@ import {
 } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact — Talk to Zenith AI, Ottawa's AI marketing agency",
+  title: "Contact Zenith AI — Ottawa Marketing Agency",
   description:
     "Get in touch with Zenith AI. Book a free 30-minute call, send us an email, or call our Ottawa office. We respond within one business day.",
   alternates: { canonical: "/contact" },

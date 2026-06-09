@@ -89,8 +89,8 @@ export default function HeroText({ calendlyUrl }: { calendlyUrl: string }) {
           transition={{ delay: 1.0, duration: 0.7, ease: "easeOut" }}
           className="mt-8 max-w-2xl text-base leading-relaxed text-[#B0B8C6] sm:text-lg"
         >
-          Websites, content, lead generation, and AI automations — designed to
-          help Ottawa businesses grow faster with smaller teams.
+          Websites, content, lead generation, and AI automations for Ottawa
+          businesses — designed to help you grow faster with smaller teams.
         </motion.p>
 
         <motion.div

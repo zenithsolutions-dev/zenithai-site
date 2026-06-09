@@ -4,7 +4,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { CALENDLY_URL } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Pricing — Ottawa web design, SEO, and social from $49.99/mo",
+  title: "Pricing — Ottawa Web Design, SEO & Social",
   description:
     "Transparent monthly and one-time pricing for Ottawa small businesses. Websites, SEO, and social media starting at $49.99/month or $499.99 one-time.",
   alternates: { canonical: "/pricing" },

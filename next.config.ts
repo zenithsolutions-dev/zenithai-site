@@ -22,6 +22,11 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
+  // Tree-shake barrel imports so we only ship the icons/animation primitives
+  // actually used, instead of the whole package. Cuts unused client JS.
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

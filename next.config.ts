@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },
   images: {
+    // Bypass Vercel's on-demand image optimization: the free-tier quota was
+    // exhausted, so /_next/image started returning 402. With unoptimized,
+    // <Image> serves files straight from /public (no /_next/image hop), at the
+    // cost of no automatic AVIF/WebP transcoding or resizing.
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
   },
   async headers() {

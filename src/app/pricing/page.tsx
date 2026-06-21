@@ -1,7 +1,42 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
-import { CALENDLY_URL } from "../lib/site";
+import { CALENDLY_URL, SITE_URL } from "../lib/site";
+
+// Service + pricing structured data. Prices are "starting from", modelled as
+// an AggregateOffer (lowPrice) so the markup stays truthful. Ties back to the
+// site-wide Organization node defined in layout.tsx via @id.
+const pricingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Websites, SEO & Social Media for Ottawa Small Businesses",
+  serviceType: "Web design, local SEO, and social media management",
+  provider: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+  areaServed: { "@type": "City", name: "Ottawa" },
+  url: `${SITE_URL}/pricing`,
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "CAD",
+    lowPrice: "49.99",
+    offerCount: 2,
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Monthly plan — website, SEO, and social",
+        price: "49.99",
+        priceCurrency: "CAD",
+        url: `${SITE_URL}/pricing`,
+      },
+      {
+        "@type": "Offer",
+        name: "One-time website build",
+        price: "499.99",
+        priceCurrency: "CAD",
+        url: `${SITE_URL}/pricing`,
+      },
+    ],
+  },
+};
 
 export const metadata: Metadata = {
   title: "Pricing — Ottawa Web Design, SEO & Social",
@@ -20,6 +55,46 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/opengraph-image"],
   },
+};
+
+// FAQ content — answers are grounded only in facts already published on the
+// site (pricing tiers, Ottawa base, response time, AI-native model). Visible
+// copy and the FAQPage schema below are kept identical, per Google policy.
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "How much does a website cost in Ottawa?",
+    a: "Our websites start at $499.99 as a one-time build you own outright, or $49.99/month all-in with hosting, updates, local SEO, and social media included — no billable hours or surprise fees.",
+  },
+  {
+    q: "What's included in the monthly plan?",
+    a: "A 5-page custom website, local SEO with Google Business Profile setup, 12 social posts a month across Instagram and Facebook, plus hosting, updates, and edits. You can cancel anytime.",
+  },
+  {
+    q: "Do I own my website?",
+    a: "With the one-time build, yes — you get the source files and own the code with no lock-in. On the monthly plan we host and maintain the site for you while you're subscribed.",
+  },
+  {
+    q: "Are you actually based in Ottawa?",
+    a: "Yes. Zenith AI is an Ottawa-based studio (our office is in Osgoode) working with small businesses across the Ottawa area.",
+  },
+  {
+    q: "What does an AI-native marketing agency do differently?",
+    a: "We use AI to do the heavy lifting on websites, content, and SEO, with human strategy and quality control on top — that's how we deliver agency-quality work at small-business prices.",
+  },
+  {
+    q: "How quickly will you get back to me?",
+    a: "We typically respond within one business day. The fastest way to start is booking a free 30-minute intro call.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
 };
 
 type Tier = {
@@ -91,6 +166,14 @@ const aiAddons: { name: string; price: string; blurb: string }[] = [
 export default function PricingPage() {
   return (
     <article className="relative bg-[#03040A]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[rgba(201,168,76,0.08)]">
         <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -212,7 +295,40 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* FAQ teaser → CTA */}
+      {/* FAQ — real Q&A targeting long-tail / local "how much / what's included" search */}
+      <section className="relative border-t border-[rgba(201,168,76,0.08)]">
+        <div className="mx-auto max-w-3xl px-6 py-20 sm:px-8 sm:py-28">
+          <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.35em] text-[#C9A84C]">
+            FAQ
+          </p>
+          <h2 className="text-center font-[var(--font-playfair)] text-3xl tracking-tight text-[#F0F2FF] sm:text-5xl">
+            Common questions
+          </h2>
+          <div className="mt-12 border-y border-white/10">
+            {faqs.map((f) => (
+              <details
+                key={f.q}
+                className="group border-b border-white/10 py-5 last:border-b-0"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-medium text-[#F0F2FF]">
+                  {f.q}
+                  <span
+                    aria-hidden
+                    className="shrink-0 text-xl leading-none text-[#C9A84C] transition-transform duration-300 group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#8892A4]">
+                  {f.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Custom-quote CTA */}
       <section className="relative border-t border-[rgba(201,168,76,0.08)]">
         <div className="mx-auto max-w-3xl px-6 py-20 text-center sm:px-8 sm:py-28">
           <h2 className="font-[var(--font-playfair)] text-3xl tracking-tight text-[#F0F2FF] sm:text-5xl">

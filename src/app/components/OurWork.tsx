@@ -25,7 +25,7 @@ const portfolio: PortfolioItem[] = [
     techTags: ["Next.js", "Stripe", "TypeScript"],
     href: "https://chromora.ca",
     linkLabel: "Visit site",
-    imageSrc: "https://chromora.ca/paintings/starry-night.jpg",
+    imageSrc: "/portfolio-chromora.jpg",
     imageAlt: "Chromora canvas art print store preview",
   },
   {

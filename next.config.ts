@@ -22,11 +22,18 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
+  // Tree-shake barrel imports so we only ship the icons/animation primitives
+  // actually used, instead of the whole package. Cuts unused client JS.
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   images: {
+    // Bypass Vercel's on-demand image optimization: the free-tier quota was
+    // exhausted, so /_next/image started returning 402. With unoptimized,
+    // <Image> serves files straight from /public (no /_next/image hop), at the
+    // cost of no automatic AVIF/WebP transcoding or resizing.
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      { protocol: "https", hostname: "chromora.ca" },
-    ],
   },
   async headers() {
     return [

@@ -26,6 +26,13 @@ export default function ParallaxBackdrop() {
     () => {
       if (!imageRef.current || reduceMotion) return;
 
+      // #hero-trigger is an ANCESTOR of this component's GSAP scope, so passing
+      // it as a selector string makes useGSAP resolve it *within* the scope and
+      // find nothing ("target not found"). Resolve the element directly and
+      // bail out cleanly if it isn't in the DOM.
+      const heroTrigger = document.getElementById("hero-trigger");
+      if (!heroTrigger) return;
+
       // Parallax: image drifts up slower than scroll (ratio ~0.4)
       // and zooms out from 1.1 → 1.0 as user descends.
       gsap.fromTo(
@@ -36,7 +43,7 @@ export default function ParallaxBackdrop() {
           scale: 1.0,
           ease: "none",
           scrollTrigger: {
-            trigger: "#hero-trigger",
+            trigger: heroTrigger,
             start: "top top",
             end: "bottom top",
             scrub: 1,

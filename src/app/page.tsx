@@ -10,12 +10,7 @@ import HowWeWork from "./components/HowWeWork";
 import SuccessCards from "./components/SuccessCards";
 import Testimonials from "./components/Testimonials";
 import CTA from "./components/CTA";
-import {
-  CALENDLY_URL,
-  CONTACT_EMAIL,
-  CONTACT_FORM_ACTION,
-  CONTACT_PHONES,
-} from "./lib/site";
+import { CALENDLY_URL, CONTACT_EMAIL, CONTACT_PHONES } from "./lib/site";
 
 /**
  * Section order (post-audit):
@@ -44,7 +39,6 @@ export default function Home() {
         calendlyUrl={CALENDLY_URL}
         contactEmail={CONTACT_EMAIL}
         contactPhones={[...CONTACT_PHONES]}
-        formAction={CONTACT_FORM_ACTION}
       />
     </>
   );

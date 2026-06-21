@@ -55,7 +55,6 @@ html.lenis body {
   --color-text-muted: var(--text-muted);
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
-  --font-mono: var(--font-geist-mono);
 }
 
 body {
@@ -167,6 +166,14 @@ body {
   animation: particle-rise var(--p-duration, 14s) linear infinite;
   animation-delay: var(--p-delay, 0s);
   will-change: transform, opacity;
+}
+
+/* Mobile: thin the decorative particle field (22 → 8) to cut compositor
+   and battery cost on phones. Desktop keeps the full field. */
+@media (max-width: 1023px) {
+  .particle:nth-child(n + 9) {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

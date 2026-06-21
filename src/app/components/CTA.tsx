@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, type FormEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import { ArrowUpRight, Check, Copy } from "lucide-react";
@@ -26,7 +26,6 @@ type CTAProps = {
   calendlyUrl: string;
   contactEmail: string;
   contactPhones: ContactPhone[];
-  formAction: string;
 };
 
 const inputClass =
@@ -36,7 +35,6 @@ export default function CTA({
   calendlyUrl,
   contactEmail,
   contactPhones,
-  formAction,
 }: CTAProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const beamRef = useRef<HTMLDivElement>(null);
@@ -87,6 +85,22 @@ export default function CTA({
     } catch {
       /* clipboard unavailable — no-op */
     }
+  };
+
+  // Build a mailto: link from the field values instead of using
+  // action="mailto:" — a form whose action is mailto is flagged as an
+  // insecure form endpoint (Mixed Content) on HTTPS pages.
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+    const subject = `New enquiry from ${name || "the Zenith AI website"}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -195,12 +209,7 @@ export default function CTA({
           <p className="text-xs uppercase tracking-[0.3em] text-[#8892A4]">
             or send a quick message
           </p>
-          <form
-            action={formAction}
-            method="POST"
-            encType="text/plain"
-            className="mt-4 flex flex-col gap-3"
-          >
+          <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
             <input
               type="text"
               name="name"

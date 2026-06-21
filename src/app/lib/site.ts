@@ -7,7 +7,6 @@ export const CONTACT_EMAIL = "hello@zenithai.ca";
 export const CONTACT_PHONES = [
   { display: "(613) 668-6851", tel: "+16136686851" },
 ] as const;
-export const CONTACT_FORM_ACTION = "mailto:hello@zenithai.ca";
 
 export const BUSINESS_ADDRESS = {
   streetAddress: "5516 Osgoode Main St, Unit 101",

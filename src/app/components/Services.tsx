@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Check, Globe, Megaphone, TrendingUp } from "lucide-react";
 import type { ComponentType } from "react";
@@ -10,6 +11,8 @@ type Service = {
   price: string;
   blurb: string;
   bullets: string[];
+  href: string;
+  linkLabel: string;
 };
 
 const services: Service[] = [
@@ -23,6 +26,8 @@ const services: Service[] = [
       "Mobile-first design",
       "Search-optimized from day one",
     ],
+    href: "/services/web-design-ottawa",
+    linkLabel: "Learn more",
   },
   {
     icon: TrendingUp,
@@ -34,6 +39,8 @@ const services: Service[] = [
       "Monthly local content",
       "Reporting you can actually read",
     ],
+    href: "#contact",
+    linkLabel: "Learn how",
   },
   {
     icon: Megaphone,
@@ -46,6 +53,8 @@ const services: Service[] = [
       "Custom graphics & copy",
       "Engagement & DMs handled",
     ],
+    href: "#contact",
+    linkLabel: "Learn how",
   },
 ];
 
@@ -150,16 +159,29 @@ export default function Services() {
                 ))}
               </ul>
 
-              <a
-                href="#contact"
-                className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-[#F0F2FF] transition-colors hover:text-[#C9A84C]"
-              >
-                Learn how{" "}
-                <ArrowUpRight
-                  size={14}
-                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
+              {s.href.startsWith("/") ? (
+                <Link
+                  href={s.href}
+                  className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-[#F0F2FF] transition-colors hover:text-[#C9A84C]"
+                >
+                  {s.linkLabel}{" "}
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
+              ) : (
+                <a
+                  href={s.href}
+                  className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-[#F0F2FF] transition-colors hover:text-[#C9A84C]"
+                >
+                  {s.linkLabel}{" "}
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </a>
+              )}
             </motion.article>
           ))}
         </div>

@@ -53,8 +53,8 @@ const services: Service[] = [
       "Custom graphics & copy",
       "Engagement & DMs handled",
     ],
-    href: "#contact",
-    linkLabel: "Learn how",
+    href: "/services/social-media-ottawa",
+    linkLabel: "Learn more",
   },
 ];
 

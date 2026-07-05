@@ -9,7 +9,7 @@ import ZenithMark from "./ZenithMark";
 // Absolute paths so the anchor links work whether the visitor is on the
 // home page or one of the dedicated /about, /pricing, /contact pages.
 const navLinks = [
-  { href: "/#services", label: "Services" },
+  { href: "/services", label: "Services" },
   { href: "/pricing", label: "Pricing" },
   { href: "/#examples", label: "Results" },
   { href: "/about", label: "About" },

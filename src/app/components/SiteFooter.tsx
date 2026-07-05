@@ -53,7 +53,7 @@ export default function SiteFooter({
             <ul className="mt-5 space-y-3 text-sm text-[#B0B8C6]">
               <li>
                 <Link
-                  href="/#services"
+                  href="/services/web-design-ottawa"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   Websites
@@ -61,7 +61,7 @@ export default function SiteFooter({
               </li>
               <li>
                 <Link
-                  href="/#services"
+                  href="/services/seo-ottawa"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   Local SEO
@@ -69,7 +69,7 @@ export default function SiteFooter({
               </li>
               <li>
                 <Link
-                  href="/#services"
+                  href="/services/social-media-ottawa"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >
                   Social media

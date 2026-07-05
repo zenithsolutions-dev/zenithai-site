@@ -39,8 +39,8 @@ const services: Service[] = [
       "Monthly local content",
       "Reporting you can actually read",
     ],
-    href: "#contact",
-    linkLabel: "Learn how",
+    href: "/services/seo-ottawa",
+    linkLabel: "Learn more",
   },
   {
     icon: Megaphone,

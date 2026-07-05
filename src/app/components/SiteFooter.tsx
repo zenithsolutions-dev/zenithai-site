@@ -101,6 +101,14 @@ export default function SiteFooter({
               </li>
               <li>
                 <Link
+                  href="/blog"
+                  className="transition-colors hover:text-[#F0F2FF]"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/#how"
                   className="transition-colors hover:text-[#F0F2FF]"
                 >

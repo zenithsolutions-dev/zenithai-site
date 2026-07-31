@@ -17,21 +17,21 @@ const PAGE_PATH = "/services/seo-ottawa";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
-  title: "SEO Ottawa — Local Search Optimization for Business",
+  title: "Ottawa SEO Services | Rank Higher on Google",
   description:
-    "Rank higher on Google in Ottawa. Local SEO, Google Business Profile optimization, and content that brings customers. Free SEO audit.",
+    "#1 Ottawa SEO agency for small business. Google Business Profile, local content & technical SEO that gets you found. Free SEO audit — from $49.99/mo.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "SEO Ottawa — Local Search Optimization for Business",
+    title: "Ottawa SEO Services | Rank Higher on Google",
     description:
-      "Rank higher on Google in Ottawa. Local SEO, Google Business Profile optimization, and content that brings customers. Free SEO audit.",
+      "#1 Ottawa SEO agency for small business. Google Business Profile, local content & technical SEO that gets you found. Free SEO audit — from $49.99/mo.",
     url: PAGE_URL,
     type: "website",
     images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SEO Ottawa — Local Search Optimization for Business",
+    title: "Ottawa SEO Services | Rank Higher on Google",
     description:
       "Local SEO, Google Business Profile optimization, and content that ranks Ottawa businesses higher on Google.",
     images: ["/opengraph-image"],
@@ -132,6 +132,10 @@ const faqs: { q: string; a: string }[] = [
   {
     q: "What's included in an SEO audit?",
     a: "Our free SEO audit reviews your current rankings, Google Business Profile, on-page SEO, site speed and technical health, local citations, and your top competitors in Ottawa. You get a clear, prioritized list of what is holding you back and what to fix first — with no obligation.",
+  },
+  {
+    q: "How much does SEO cost in Ottawa?",
+    a: "Zenith AI offers Ottawa SEO from $49.99/month — a fraction of typical agency retainers. Get a free audit to see what's possible for your business.",
   },
 ];
 

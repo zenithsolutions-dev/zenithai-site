@@ -17,21 +17,21 @@ const PAGE_PATH = "/services/web-design-ottawa";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
-  title: "Web Design Ottawa — Custom Websites for Local Business",
+  title: "Ottawa Web Design | Custom Sites from $49.99/mo",
   description:
-    "Professional web design in Ottawa. Fast, mobile-first, SEO-ready websites for small businesses. From $49.99/month. Free consultation.",
+    "Ottawa web design built fast & mobile-first. SEO-ready sites for small business — no agency price tag. Free consultation, from $49.99/mo.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Web Design Ottawa — Custom Websites for Local Business",
+    title: "Ottawa Web Design | Custom Sites from $49.99/mo",
     description:
-      "Fast, mobile-first, SEO-ready websites for Ottawa small businesses. From $49.99/month. Book a free consultation.",
+      "Ottawa web design built fast & mobile-first. SEO-ready sites for small business — no agency price tag. Free consultation, from $49.99/mo.",
     url: PAGE_URL,
     type: "website",
     images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Design Ottawa — Custom Websites for Local Business",
+    title: "Ottawa Web Design | Custom Sites from $49.99/mo",
     description:
       "Fast, mobile-first, SEO-ready websites for Ottawa small businesses. From $49.99/month.",
     images: ["/opengraph-image"],
@@ -126,6 +126,10 @@ const faqs: { q: string; a: string }[] = [
   {
     q: "Do you help with SEO too?",
     a: "Yes. Every website ships with an SEO foundation — fast load times, clean structure, metadata, and local schema. We also offer dedicated local SEO and Google Business Profile management to help you rank higher in Ottawa search results over time.",
+  },
+  {
+    q: "Do you build mobile-first websites?",
+    a: "Yes. Every site is mobile-first and Core Web Vitals optimized, since most Ottawa customers search on phones.",
   },
 ];
 

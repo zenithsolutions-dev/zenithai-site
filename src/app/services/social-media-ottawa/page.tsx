@@ -17,21 +17,21 @@ const PAGE_PATH = "/services/social-media-ottawa";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
 export const metadata: Metadata = {
-  title: "Social Media Marketing Ottawa — Grow Your Audience",
+  title: "Ottawa Social Media Management | IG, FB & TikTok",
   description:
-    "Social media management for Ottawa small businesses. Content, posting, and growth on Instagram, Facebook & TikTok. From $49.99/month.",
+    "Done-for-you social media for Ottawa businesses. Daily content, posting & growth on Instagram, Facebook & TikTok. From $49.99/mo — book a free call.",
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Social Media Marketing Ottawa — Grow Your Audience",
+    title: "Ottawa Social Media Management | IG, FB & TikTok",
     description:
-      "Social media management for Ottawa small businesses. Content, posting, and growth on Instagram, Facebook & TikTok. From $49.99/month.",
+      "Done-for-you social media for Ottawa businesses. Daily content, posting & growth on Instagram, Facebook & TikTok. From $49.99/mo — book a free call.",
     url: PAGE_URL,
     type: "website",
     images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Social Media Marketing Ottawa — Grow Your Audience",
+    title: "Ottawa Social Media Management | IG, FB & TikTok",
     description:
       "Content, posting, and growth on Instagram, Facebook & TikTok for Ottawa small businesses. From $49.99/month.",
     images: ["/opengraph-image"],
@@ -126,6 +126,14 @@ const faqs: { q: string; a: string }[] = [
   {
     q: "How do I measure if social media is working?",
     a: "We track the metrics that map to real business results: follower growth, reach, engagement, profile visits, and — most importantly — clicks, messages, and enquiries. Every month you get a plain-English report showing what is working and what we are adjusting, so you are never guessing whether it is paying off.",
+  },
+  {
+    q: "Which platforms do you manage for Ottawa businesses?",
+    a: "Instagram, Facebook, and TikTok as standard. LinkedIn available on request for B2B clients.",
+  },
+  {
+    q: "How much is social media management in Ottawa?",
+    a: "Plans start at $49.99/month for full content creation, posting, and engagement — a fraction of hiring in-house.",
   },
 ];
 

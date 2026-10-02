@@ -34,7 +34,7 @@ const portfolio: PortfolioItem[] = [
     description:
       "A conversion-focused website for an Ottawa moving company. Fast, mobile-first, built to rank locally.",
     techTags: ["Next.js", "SEO-optimized", "Mobile-first"],
-    href: "https://magicmoversottawa.com",
+    href: "https://magiccarpetmoving.com",
     linkLabel: "Visit site",
     imageSrc: "/portfolio-magicmovers.webp",
     imageAlt: "Magic Carpet Movers Ottawa moving company website preview",
